@@ -9,10 +9,13 @@ const Navbar = () =>{
 
     return(
         <header className="border-b border-blue-300 py-2 ">
-            <div className=" navbar flex items-center justify-between xl:max-w-7xl max-w-full px-[8%]">
+            <div className=" navbar flex items-center justify-between  max-w-full px-[6%]">
             
+                <div className="Logo flex">
+                    <img src={headphonesLogo} width={50} height={55}></img>
+                    <p className="self-center px-2 font-semibold">MUSIC BLOG</p>
+                </div>
                 
-                <img src={headphonesLogo} width={50} height={55}></img>
                 
                     
                 <div  className="flex items-center w-auto">
