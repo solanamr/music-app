@@ -34,14 +34,16 @@ const Login = () =>{
                    {...register("email", {                                  //registra el input
                     required:{
                         value:true,
-                        message:'El campo es obligatorio',
+                        message:'Debe completar este campo',
                     },
                     pattern: {
-                        value: /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/ ,
+                        value: /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/ , 
                         message: "El formato es incorrecto"
                     }
                     })}
-                      />   
+                    
+                      /> 
+                    {errors.email && <span className='text-xs italic'>{errors.email.message}</span>}  
                 </div>
                 <div>
                 <div className='pass-container mt-6'>
@@ -49,18 +51,19 @@ const Login = () =>{
                     {...register("password",{
                     required:{
                         value:true,
-                        message:'El campo es obligatorio',
+                        message:'Debe completar este campo',
                     },
                     pattern: {
-                        minLenght:{
-                            value: 8,
-                            message:"La contraseña debe tener al menos ocho caracteres."
-                        } ,
+                        
+                        value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/,
+                        message:"La contraseña debe tener al menos ocho caracteres, una letra mayúscula, una minúscula, y un número."
                         
                     }
                     })}
+                    
                      /> 
-                    <a href='' className='mt-1'>Forgot your password</a>
+                    {errors.password && <span className='text-xs italic self-start mt-1'>{errors.password.message}</span>}
+                    
                 </div>
                 </div>
                 
