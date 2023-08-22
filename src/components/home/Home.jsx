@@ -5,6 +5,7 @@ import confetti from "../../assets/confetti.jpg";
 import Blog from "../blog/Blog";
 import Navbar from "../navbar/Navbar";
 
+
 const Home = () => {
 
     const dispatch = useDispatch();
