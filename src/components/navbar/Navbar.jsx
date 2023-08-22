@@ -1,4 +1,4 @@
-import React from "react";
+//import React, { useContext } from "react";
 import "../navbar/navbar.css"
 import headphonesLogo from '../../assets/headphones.png'
 import { Link } from "react-router-dom";
@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 
 const Navbar = () =>{
-
+//const loginStatus = useContext(LoginContext);
     return(
         <header className="border-b border-blue-300 py-2 ">
             <div className=" navbar flex items-center justify-between  max-w-full px-[6%]">
@@ -35,8 +35,11 @@ const Navbar = () =>{
                    
                     </ul>    
                 </div>
-                <div>
+                <div> 
+                {/* // LoginContext ?
+                //     <Link to="/"  className="px-5 py-2 font-semibold bg-blue rounded-xl" >Logout</Link> : */}
                   <Link to="/login"  className="px-5 py-2 font-semibold bg-blue rounded-xl" >Login</Link>
+                
                 </div>
             
 

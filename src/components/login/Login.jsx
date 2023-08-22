@@ -6,8 +6,6 @@ import { useForm} from "react-hook-form"
 
 
 
-
-
 const Login = () =>{
 
     const {
@@ -78,7 +76,7 @@ const Login = () =>{
     )
 }
 
-export default Login;
 
+export default Login;
 
 
