@@ -17,7 +17,7 @@ const Register = () =>{
 
     return(
 
-        <div className="h-100 h-custom" style="background-color: #8fc4b7;">
+        <div className="h-100 h-custom" style={{backgroundColor: "#8fc4b7"}}>
             <div>
                 <h1 className='title text-sm'>Register</h1>
 
