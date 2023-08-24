@@ -1,3 +1,5 @@
+import Comments from "../comments/Comments";
+
 const Detail = () => {
     return (
         <section>
@@ -13,6 +15,7 @@ const Detail = () => {
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo eum necessitatibus ratione porro. Nulla quaerat iste molestiae recusandae at. Nihil ipsum, dicta error aliquam fugit similique provident quos beatae enim.
                 </p>
             </div>
+            <Comments/>
         </section>
     );
 }

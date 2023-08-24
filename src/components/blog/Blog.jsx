@@ -1,29 +1,19 @@
 import { Link } from "react-router-dom";
+import temp from "../../assets/temp.avif";
 
-const Blog = () => {
+
+const Blog = ({ title, text, category, key }) => {
   return (
     <main className="pt-20 pb-10">
-      <section className="flex justify-center">
+      <section >
         <Link to="blog">
-            <div>
-                <div className="w-80 h-60 border border-purple bg-purple mr-10 rounded-lg"></div>
-                <p className="w-64">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                </p>
-            </div>
+          <div key={key} className="border border-black bg-purple w-[450px] ml-10 px-5 py-7 rounded-lg">
+          <img src={temp} alt="" className="w-96 h-60 ml-2"/>
+            <h1 className="font-bold text-white pt-7 pl-4 text-lg">{title}</h1>
+            <h2 className="text-white pl-4 w-96">{text}</h2>
+            <h2>{category}</h2>
+          </div>
         </Link>
-        <div>
-            <div className="w-80 h-60 border border-purple bg-purple mr-10 rounded-md"></div>
-            <p className="w-64">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-            </p>
-        </div>
-        <div>
-            <div className="w-80 h-60 border border-purple bg-purple mr-10 rounded-md"></div>
-            <p className="w-64">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-            </p>
-        </div>
       </section>
     </main>
   );
