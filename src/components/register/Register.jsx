@@ -1,29 +1,49 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm} from "react-hook-form"
-import background from "../../assets/ecualizador.avif";
+import background from "../../assets/register.jpg";
 import "../Register/register.css"
+import axios from "axios";
 
 
 const Register = () =>{
 
+    const navigate = useNavigate();
     const {
+        reset,
         register,
         handleSubmit,
         formState: { errors },
+
       } = useForm()
 
-    const onSubmit = evento => {
-        console.log(evento);
-    }
+      const onSubmit = async (data) => {
+
+        console.log("antes de try")
+        try {
+          const res = await axios.post(
+            "http://localhost:5077/api/users",
+            data
+          );
+          reset();
+          navigate("/");
+          console.log("anduvo");
+          console.log(data);
+          return res;
+        } catch (err) {
+          console.error(err);
+        }
+        console.log("dsp de try")
+        
+      };
     
    
 
     return(
 
-        <div className="flex flex-col items-center justify-center h-screen"  style={{  backgroundImage: `url(${background})`, backgroundSize: 'cover', }}>
+        <div className="flex flex-col items-center justify-center h-screen"  style={{  backgroundImage: `url(${background})`, backgroundSize: 'cover' }}>
             <div className= "container-blur flex-row justify-center  max-w-sm  p-4 rounded-lg text-white" >
                 
-                    <h1 className='title m-6 text-lg text-sm justify-center text-center'>Register</h1>
+                    <h1 className='m-6 text-lg text-sm justify-center text-center'>Register</h1>
 
                     <form className='signUp-form  space-y-4 my-7 mx-2 flex-row' onSubmit={handleSubmit(onSubmit)}> { /* handleSubmit valida los input antes de invocar onSubmit */}
                         <div className="mx-7">
@@ -96,9 +116,9 @@ const Register = () =>{
                         
                         </div>
                         
-                        <button type='submit' value="submit" className=" text-white bg-blue px-7 py-1 rounded-md ">Sign Up</button> 
+                        <button type='submit' className=" text-white bg-blue px-7 py-1 rounded-md ">Sign Up</button> 
                         <div className='register'>
-                            <p className="mx-7">Already have an account? <Link to=''> Log In!</Link></p>
+                            <p className="mx-7">Already have an account? <Link to='/login'> Log In!</Link></p>
                             
                         </div>
 
