@@ -1,0 +1,36 @@
+.top-container{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    background-color: #5499C7;
+}
+
+.card-container{
+    display: flex;
+    position: inherit;
+    flex-wrap: wrap;
+    margin-top: 15%;
+    background-color: white;
+}
+
+
+.card-container .user-image img{
+    width: fit-content;
+} 
+.card-container .user-image{
+    max-width: 40%;
+}
+.inputs{
+    max-width: 60%;
+}
+.card-container textarea{
+    min-width: 400px;
+}
+@media (max-width:500px){
+    .card-container .user-image{
+        max-width: 100%;
+    }
+    .inputs{
+        max-width: 100%;
+    }
+}

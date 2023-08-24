@@ -3,6 +3,7 @@ import Home from "./components/home/Home"
 import Detail from "./components/detail/Detail";
 import Login from './components/login/Login';
 import Register from "./components/register/Register";
+import AddPost from "./components/addPost/addPost";
 
 
 
@@ -17,6 +18,8 @@ function App() {
           <Route path="/blog" element={<Detail/>} />
           <Route path="/login" element={<Login/>} />
           <Route path="/register" element={<Register/>} /> 
+          <Route path="/add" element={<AddPost/>} /> 
+
         </Routes>
     </BrowserRouter>
     </>

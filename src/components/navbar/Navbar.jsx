@@ -22,17 +22,28 @@ const Navbar = () =>{
                 
                     
                 <div  className="flex items-center w-auto">
-                    <ul className="dropdown flex justify-betwen nav-ul">
-                    <li className="px-5 py-2 font-semibold nav-li"><Link to=""  >Home</Link></li> 
-                    <li className="px-5 py-2 font-semibold nav-li ">Categorias
-                        <ul className="submenu">
-                            <li><Link className="py-2 font-semibold nav-li">opcion1</Link></li>
-                            <li><Link className="py-2 font-semibold nav-li">opcion2</Link></li>
-                            <li><Link className="py-2 font-semibold nav-li">opcion3</Link></li>
-                        </ul>
-                    </li>
+                    <ul className="dropdown flex justify-betwen">
+                        <li className="px-5 py-2 font-semibold self-center "><Link to=""  >Home</Link></li> 
+                        
+                            {/* <ul className="submenu w-64 rounded-md px-4  py-4 space-y-4"> */}
+                            
+                        <li className="px-5 py-2 font-semibold ">
+                            <select  class=" appearance-none rounded-md px-4  px-4  py-4 " >
+                                
+                                <option  value='' disabled > Categorías</option>
+                                <option className="space-y-4" value="2">Entrevistas a Artistas</option>
+                                <option value="3">Generos Musicales</option>
+                                <option value="4">Nuevos Talentos</option>
+                                <option value="5">Historia de Grandes artistas</option>
+                                <option value="6">Tutoriales</option>
+                                <option value="7">Historia de la Musica</option>
+                                <option value="8">Instrumentos Musicales</option>
+                            
+                                
+                            </select>
+                            
+                        </li>
                     
-                   
                     </ul>    
                 </div>
                 <div> 
