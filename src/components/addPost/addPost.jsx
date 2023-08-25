@@ -6,15 +6,15 @@ import instrumentos from "../../assets/instrumentos.jpg";
 
 const AddPost = () => {
 
-    function getCurrentDateTime() {
-        const now = new Date();
-        const year = now.getFullYear();
-        const month = String(now.getMonth() + 1).padStart(2, "0");
-        const day = String(now.getDate()).padStart(2, "0");
-        const hours = String(now.getHours()).padStart(2, "0");
-        const minutes = String(now.getMinutes()).padStart(2, "0");
-        return `${year}-${month}-${day}T${hours}:${minutes}`;
-    }
+    // function getCurrentDateTime() {
+    //     const now = new Date();
+    //     const year = now.getFullYear();
+    //     const month = String(now.getMonth() + 1).padStart(2, "0");
+    //     const day = String(now.getDate()).padStart(2, "0");
+    //     const hours = String(now.getHours()).padStart(2, "0");
+    //     const minutes = String(now.getMinutes()).padStart(2, "0");
+    //     return `${year}-${month}-${day}T${hours}:${minutes}`;
+    // }
 
 
     const {
@@ -37,11 +37,10 @@ const AddPost = () => {
 
                 <form className="flex-row" onSubmit={handleSubmit(onSubmit)}>
                     
-                    <div className=" bg-white flex card-container rounded-xl py-4 ">
+                    <div className="card-container bg-white flex card-container rounded-xl py-4 ">
                         
                         <div className="user-image shadow-2xl p-4 flex mx-7 w-96 h-96" >
-                            <img className="object-cover w-fit-content " src={instrumentos}></img>
-                            
+                            <img className="object-cover w-fit-content " src={instrumentos}></img>    
                         </div>
                         <div className="flex-row space-y-4 inputs">
                         <div className="text-center">
@@ -49,7 +48,7 @@ const AddPost = () => {
                             <h1 className="text-black text-3xl font-bold inline-block">New Post</h1>
                         </div> 
                        
-                        <div className="text-right">
+                        {/* <div className="text-right">
                             <input
                                 name="date"
                                 type="datetime-local"
@@ -60,13 +59,11 @@ const AddPost = () => {
                                     },
                                    
                                  })}
-
                             />    
-                        </div>      
-                     
+                        </div>       */}
                        
                         <div className="text-black">
-                                <input type="text" className="mx-2 border border-purple-600 rounded-md  text-black p-1 w-full"  name="title" placeholder="Title"
+                                <input type="text" className="mx-2 border border-purple-600 rounded-md  text-black p-1 w-5/6"  name="title" placeholder="Title"
                                 {...register("title", {                                 
                                 required:{
                                     value:true,
@@ -90,7 +87,7 @@ const AddPost = () => {
                                 }
                                 })}>
                                             
-                                    <option value="Categorías" defaultValue={"Categoría"}> Categorías</option>
+                                    <option value="" defaultValue={"Categoría"}> Categorías</option>
                                     <option value="1">Reseñas</option>                                  
                                     <option value="2">Entrevista a Artistas</option>
                                     <option value="3">Géneros Musicales</option>
@@ -120,7 +117,7 @@ const AddPost = () => {
                             </div>
                            
                             <div>
-                                <textarea className="mx-2 border border-purple-600 rounded-md  text-black w-full p-4" type="text" name="post" placeholder="Post"  rows="7"
+                                <textarea className="mx-2 border border-purple-600 rounded-md  text-black w-5/6 p-4" type="text" name="post" placeholder="Post"  rows="7"
                                 {...register("post",{
                                     required: true,
                                     message: "Debe completar este campo"
