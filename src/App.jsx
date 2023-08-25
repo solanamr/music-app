@@ -7,6 +7,7 @@ import AddPost from "./components/addPost/addPost";
 
 
 
+
 function App() {
 
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/login" element={<Login/>} />
           <Route path="/register" element={<Register/>} /> 
           <Route path="/add" element={<AddPost/>} /> 
+          <Route path="/blog/:id" element={<Detail/>} /> 
 
         </Routes>
     </BrowserRouter>

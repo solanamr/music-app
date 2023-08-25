@@ -37,7 +37,7 @@ const AddPost = () => {
                             }
                             })}>
                                         
-                                <option value="" disabled > Categorías</option>
+                                <option value="" > Categorías</option>
                                 <option value="2">Entrevistas a Artistas</option>
                                 <option value="3">Generos Musicales</option>
                                 <option value="4">Nuevos Talentos</option>
