@@ -28,10 +28,10 @@ const Navbar = () =>{
                             {/* <ul className="submenu w-64 rounded-md px-4  py-4 space-y-4"> */}
                             
                         <li className="px-5 py-2 font-semibold ">
-                            <select  class=" appearance-none rounded-md px-4  px-4  py-4 " >
+                            <select  className=" appearance-none rounded-md px-4  px-4  py-4 " >
                                 
-                                <option  value='' disabled > Categorías</option>
-                                <option className="space-y-4" value="2">Entrevistas a Artistas</option>
+                                <option value='Categorias' defaultValue={"Categorías"}> Categorías</option>
+                                <option value="2">Entrevistas a Artistas</option>
                                 <option value="3">Generos Musicales</option>
                                 <option value="4">Nuevos Talentos</option>
                                 <option value="5">Historia de Grandes artistas</option>
