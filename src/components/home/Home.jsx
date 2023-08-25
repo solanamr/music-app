@@ -1,36 +1,38 @@
-import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { fetchUsers } from "../../redux/states/users/usersSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { fetchBlogs } from "../../redux/states/blog/blogSlice";
 import confetti from "../../assets/confetti.jpg";
 import Blog from "../blog/Blog";
 import Navbar from "../navbar/Navbar";
-
+import Footer from "../footer/Footer";
 
 const Home = () => {
+  const dispatch = useDispatch();
+  const blogsState = useSelector((state) => state.blogs.blogs);
+  console.log(blogsState, "state");
 
-    const dispatch = useDispatch();
-    const usersState = useSelector((state) => state.users.users);
-    // console.log(usersState, 'state')
+  useEffect(() => {
+    dispatch(fetchBlogs());
+  }, [dispatch]);
 
-    useEffect(() => {
-        dispatch(fetchUsers());
-      }, [dispatch]);
-    
-    return (
-        <section >
-            <Navbar/>
-            <img src={confetti} alt="" className="w-full h-screen"/>
-            <Blog/>
-            {
-                usersState.map((u,i) =>(
-                    <div key={i}>
-                        <h1>nombre: {u.firstName}</h1>
-                        <h2>apellido: {u.lastName}</h2>
-                    </div>
-                ))
-            }
-        </section>
-    );
-}
- 
+  return (
+    <section>
+      <Navbar />
+      <img src={confetti} alt="" className="w-full h-screen" />
+      <div className="flex justify-center flex-wrap">
+        {blogsState.map((b, i) => (
+          <div key={i}>
+            
+            
+                <Blog title={b.title} text={b.text} key={i} cat={b.category} id={b.id}/>
+            
+          </div>
+        ))}
+      </div>
+      <Footer/>
+    </section>
+  );
+};
+
 export default Home;

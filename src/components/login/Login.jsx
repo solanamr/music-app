@@ -46,11 +46,11 @@ const Login = () => {
             {" "}
             {/* handleSubmit valida los input antes de invocar onSubmit */}
             <div className="ml-[38%]">
-              <div>
+              <div className="flex flex-col">
                 <input
                   type="text"
                   placeholder="Email"
-                  className="border-b-2 border-black bg-purple mt-10 mb-5"
+                  className="border-b-2 border-lightGrey bg-purple mt-10 mb-1 w-60"
                   {...register("email", {
                     //registra el input
                     required: {
@@ -62,14 +62,15 @@ const Login = () => {
                       message: "El formato es incorrecto",
                     },
                   })}
-                />
+                  />
+                  {errors.email && <span className='text-xs text-white italic self-start'>{errors.email.message}</span>}
               </div>
 
-              <div>
+              <div className="flex flex-col">
                 <input
                   type="password"
                   placeholder="Password"
-                  className="border-b-2 border-black bg-purple mt-5"
+                  className="border-b-2 border-lightGrey bg-purple mt-5 w-60"
                   {...register("password", {
                     required: {
                       value: true,
@@ -84,6 +85,7 @@ const Login = () => {
                     },
                   })}
                 />
+                {errors.password && <span className='text-xs text-white italic self-start mt-1'>{errors.password.message}</span>}
               </div>
             </div>
             <div>

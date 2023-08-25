@@ -1,134 +1,171 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useForm} from "react-hook-form"
+import { useForm } from "react-hook-form";
 import background from "../../assets/register.jpg";
-import "../Register/register.css"
 import axios from "axios";
 
+const Register = () => {
+  const navigate = useNavigate();
 
-const Register = () =>{
+  const {
+    register,
+    reset,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-    const navigate = useNavigate();
-    const {
-        reset,
-        register,
-        handleSubmit,
-        formState: { errors },
+  const onSubmit = async (data) => {
+    try {
+      const res = await axios.post(
+        "http://localhost:5077/api/users",
+        data
+      );
+      reset();
+      navigate("/");
+      console.log("anduvo");
+      return res;
+    } catch (err) {
+      console.error(err.message);
+    }
+    console.log(data);
+  };
 
-      } = useForm()
+  return (
+    <div
+      className="flex flex-col items-center justify-center h-screen"
+      style={{
+        backgroundImage: `url(${background})`,
+        backgroundSize: "contain",
+      }}
+    >
+      <div className="bg-white bg-opacity-20 backdrop-blur-lg border border-white drop-shadow-lg flex-row justify-center  max-w-sm   rounded-lg text-white">
+        <h1 className="title m-6 text-4xl font-bold justify-center text-center uppercase">
+          Register
+        </h1>
 
-      const onSubmit = async (data) => {
+        <form
+          className=" py-10 px-5 flex-row"
+          onSubmit={handleSubmit(onSubmit)}
+        >
+          {" "}
+          {/* handleSubmit valida los input antes de invocar onSubmit */}
+          <div className="mx-7">
+            <label className="mx-7">Nombre</label>
+            <input
+              className=" mx-7 my-2 px-2 border-b-2 border-black rounded-md bg-lightGrey text-black placeholder-white placeholder-opacity-75"
+              type="text"
+              name="name"
+              placeholder="Nombre"
+              {...register("FirstName", {
+                required: {
+                  value: true,
+                  message: "Debe completar este campo",
+                },
+                pattern: {
+                  value: /^[a-zA-Z ]+$/,
+                  message: "El formato es incorrecto",
+                },
+              })}
+            />
+            {errors.FirstName && (
+              <span className="text-xs italic mx-7">
+                {errors.FirstName.message}
+              </span>
+            )}
+          </div>
+          <div className="mx-7">
+            <label className="mx-7">Apellido</label>
+            <input
+              className="mx-7 my-2 px-2 border-b-2 border-black rounded-md bg-lightGrey text-black placeholder-white placeholder-opacity-75"
+              type="text"
+              name="lastName"
+              placeholder="Apellido"
+              {...register("LastName", {
+                required: {
+                  value: true,
+                  message: "Debe completar este campo",
+                },
+                pattern: {
+                  value: /^[a-zA-Z ]+$/,
+                  message: "El formato es incorrecto",
+                },
+              })}
+            />
+            {errors.LastName && (
+              <span className="text-xs italic mx-7">
+                {errors.LastName.message}
+              </span>
+            )}
+          </div>
+          <div className="mx-7">
+            <label className="mx-7">Email</label>
+            <input
+              className=" mx-7 my-2 px-2 border-b-2 border-black rounded-md bg-lightGrey text-black placeholder-white placeholder-opacity-75"
+              type="text"
+              name="email"
+              placeholder="Email"
+              {...register("Email", {
+                required: {
+                  value: true,
+                  message: "Debe completar este campo",
+                },
+                pattern: {
+                  value: /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/,
+                  message: "El formato es incorrecto",
+                },
+              })}
+            />
+            {errors.Email && (
+              <span className="text-xs italic mx-7">
+                {errors.Email.message}
+              </span>
+            )}
+          </div>
+          <div className="mx-7">
+            <label className="mx-7">Contraseña</label>
+            <input
+              className="mx-7 my-2 px-2 border-b-2 border-black rounded-md bg-lightGrey text-black placeholder-white placeholder-opacity-75"
+              name="password"
+              type="password"
+              placeholder="Contraseña"
+              {...register("Password", {
+                required: {
+                  value: true,
+                  message: "Debe completar este campo",
+                },
+                pattern: {
+                  value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$/,
+                  message:
+                    "La contraseña debe tener al menos seis caracteres, una letra mayúscula, una minúscula, y un número.",
+                },
+              })}
+            />
+            {errors.Password && (
+              <span className="text-xs italic text-justify mt-1 mx-7">
+                {errors.Password.message}
+              </span>
+            )}
+          </div>
+          <button
+            type="submit"
 
-        console.log("antes de try")
-        try {
-          const res = await axios.post(
-            "http://localhost:5077/api/users",
-            data
-          );
-          reset();
-          navigate("/");
-          console.log("anduvo");
-          console.log(data);
-          return res;
-        } catch (err) {
-          console.error(err);
-        }
-        console.log("dsp de try")
-        
-      };
-    
-   
-
-    return(
-
-        <div className="flex flex-col items-center justify-center h-screen"  style={{  backgroundImage: `url(${background})`, backgroundSize: 'cover' }}>
-            <div className= "container-blur flex-row justify-center  max-w-sm  p-4 rounded-lg text-white" >
-                
-                    <h1 className='m-6 text-lg text-sm justify-center text-center'>Register</h1>
-
-                    <form className='signUp-form  space-y-4 my-7 mx-2 flex-row' onSubmit={handleSubmit(onSubmit)}> { /* handleSubmit valida los input antes de invocar onSubmit */}
-                        <div className="mx-7">
-                            <input className=" mx-7 border-b-2 border-black rounded-md bg-lightGrey text-black" type='text' name='name'  placeholder='Name' 
-                            {...register("name", {                                 
-                            required:{
-                                value:true,
-                                message:'Debe completar este campo',
-                            },
-                            pattern: {
-                                value: /^[a-zA-Z ]+$/ , 
-                                message: "El formato es incorrecto"
-                            }
-                            })}
-                            
-                                /> 
-                            {errors.email && <span className='text-xs italic mx-7'>{errors.email.message}</span>}  
-                        </div>   
-                        <div className="mx-7">
-                            <input className="mx-7 border-b-2 border-black rounded-md bg-lightGrey text-black" type='text' name='lastName'  placeholder='Last Name' 
-                            {...register("lastName", {                                 
-                            required:{
-                                value:true,
-                                message:'Debe completar este campo',
-                            },
-                            pattern: {
-                                value: /^[a-zA-Z ]+$/ , 
-                                message: "El formato es incorrecto"
-                            }
-                            })}
-                            
-                                /> 
-                            {errors.email && <span className='text-xs italic mx-7'>{errors.email.message}</span>}  
-                        </div>                                                                       
-                        <div className="mx-7">
-                            <input className=" mx-7 border-b-2 border-black rounded-md bg-lightGrey text-black" type='text' name='email'  placeholder='Email' 
-                            {...register("email", {                                 
-                            required:{
-                                value:true,
-                                message:'Debe completar este campo',
-                            },
-                            pattern: {
-                                value: /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/ , 
-                                message: "El formato es incorrecto"
-                            }
-                            })}
-                            
-                                /> 
-                            {errors.email && <span className='text-xs italic mx-7'>{errors.email.message}</span>}  
-                        </div>
-                        
-                        <div className='mx-7'>
-                            <input className="mx-7 border-b-2 border-black rounded-md bg-lightGrey text-black" name='password' type='password'  placeholder='Password'  
-                            {...register("password",{
-                            required:{
-                                value:true,
-                                message:'Debe completar este campo',
-                            },
-                            pattern: {
-                                
-                                value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/,
-                                message:"La contraseña debe tener al menos ocho caracteres, una letra mayúscula, una minúscula, y un número."
-                                
-                            }
-                            })}
-                            
-                                /> 
-                            {errors.password && <span className='text-xs italic self-start mt-1 mx-7'>{errors.password.message}</span>}
-                            
-                        
-                        </div>
-                        
-                        <button type='submit' className=" text-white bg-blue px-7 py-1 rounded-md ">Sign Up</button> 
-                        <div className='register'>
-                            <p className="mx-7">Already have an account? <Link to='/login'> Log In!</Link></p>
-                            
-                        </div>
-
-                    </form>
-
-                
-            </div>
-        </div>
-    )
-}
-
+            // value="submit"
+            className=" text-white bg-blue px-6 py-1 rounded-md ml-28 mt-5 mb-5"
+          >
+            Sign Up
+          </button>
+          <div className="register">
+            <p className="mx-14 text-sm">
+              Already have an account?
+              <Link to="/login" className="hover:underline">
+                {" "}
+                Log In
+              </Link>
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+};
 
 export default Register;

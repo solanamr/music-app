@@ -87,7 +87,11 @@ const AddPost = () => {
                                 }
                                 })}>
                                             
+<<<<<<< HEAD
                                     <option value="" defaultValue={"Categoría"}> Categorías</option>
+=======
+                                    <option value=""> Categorías</option>
+>>>>>>> eef11830361ff86720d3fb91c64a72bdec08a4c3
                                     <option value="1">Reseñas</option>                                  
                                     <option value="2">Entrevista a Artistas</option>
                                     <option value="3">Géneros Musicales</option>
