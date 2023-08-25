@@ -30,14 +30,18 @@ const Navbar = () =>{
                         <li className="px-5 py-2 font-semibold ">
                             <select  className=" appearance-none rounded-md px-4  px-4  py-4 " >
                                 
-                                <option value='Categorias' defaultValue={"Categorías"}> Categorías</option>
-                                <option value="2">Entrevistas a Artistas</option>
-                                <option value="3">Generos Musicales</option>
-                                <option value="4">Nuevos Talentos</option>
-                                <option value="5">Historia de Grandes artistas</option>
-                                <option value="6">Tutoriales</option>
-                                <option value="7">Historia de la Musica</option>
-                                <option value="8">Instrumentos Musicales</option>
+                            <option value="Categorías" defaultValue={"Categoría"}> Categorías</option>
+                                    <option value="1">Reseñas</option>                                  
+                                    <option value="2">Entrevista a Artistas</option>
+                                    <option value="3">Géneros Musicales</option>
+                                    <option value="4">Descubriendo Nuevos Talentos</option>
+                                    <option value="5">Historias de Bandas y Artistas Famosos</option>
+                                    <option value="6">Conciertos y Festivales</option>
+                                    <option value="7">Tutoriales</option>
+                                    <option value="8">Noticias y Tendencias de la Industria</option>
+                                    <option value="9">Historia de la Musica</option>
+                                    <option value="10">Instrumentos Musicales
+                                </option>
                             
                                 
                             </select>

@@ -51,16 +51,23 @@ const AddPost = () => {
                        
                         <div className="text-right">
                             <input
-                                
+                                name="date"
                                 type="datetime-local"
                                 defaultValue={getCurrentDateTime()}
+                                {...register("date", {                                 
+                                    required:{
+                                        value:true 
+                                    },
+                                   
+                                 })}
+
                             />    
                         </div>      
                      
                        
                         <div className="text-black">
                                 <input type="text" className="mx-2 border border-purple-600 rounded-md  text-black p-1 w-full"  name="title" placeholder="Title"
-                                {...register("name", {                                 
+                                {...register("title", {                                 
                                 required:{
                                     value:true,
                                     message:'Debe completar este campo',
@@ -71,7 +78,7 @@ const AddPost = () => {
                                 }
                                 })}
                                 />
-                                 {errors.title && <span className='text-xs italic mx-7'>{errors.title.message}</span>}
+                                {errors.title && <span className='text-xs italic mx-7'>{errors.title.message}</span>}
                             </div>
                             <div className="flex">
                                 <select name="categoria" className="rounded-md px-4 py-2 mx-2 border border-purple-600 " 
@@ -83,26 +90,43 @@ const AddPost = () => {
                                 }
                                 })}>
                                             
-                                    <option value="Categorías" defaultValue={"Categoría"} > Categorías</option>
-                                    <option value="2">Entrevistas a Artistas</option>
-                                    <option value="3">Generos Musicales</option>
-                                    <option value="4">Nuevos Talentos</option>
-                                    <option value="5">Historia de Grandes artistas</option>
-                                    <option value="6">Tutoriales</option>
-                                    <option value="7">Historia de la Musica</option>
-                                    <option value="8">Instrumentos Musicales</option>
+                                    <option value="Categorías" defaultValue={"Categoría"}> Categorías</option>
+                                    <option value="1">Reseñas</option>                                  
+                                    <option value="2">Entrevista a Artistas</option>
+                                    <option value="3">Géneros Musicales</option>
+                                    <option value="4">Descubriendo Nuevos Talentos</option>
+                                    <option value="5">Historias de Bandas y Artistas Famosos</option>
+                                    <option value="6">Conciertos y Festivales</option>
+                                    <option value="7">Tutoriales</option>
+                                    <option value="8">Noticias y Tendencias de la Industria</option>
+                                    <option value="9">Historia de la Musica</option>
+                                    <option value="10">Instrumentos Musicales</option>
                                         
                                             
                                 </select>
+                                {errors.categoria && <span className='text-xs italic mx-7'>{errors.categoria.message}</span>}
                                 
 
                                 <label htmlFor="file"  className="ml-6 w-24" > Agregá una imagen:</label>
 
-                                <input  className="mr-8" type="file"  name="file" accept="image/png, image/jpeg" />
+                                <input  className="mr-8" type="file"  name="file" accept="image/png, image/jpeg"
+                                 {...register("file", {                                 
+                                    required:{
+                                        value:false,
+                                    },
+                                 
+                                    })}
+                                />
                             </div>
                            
-                            <div className="">
-                                <textarea className="mx-2 border border-purple-600 rounded-md  text-black w-full p-4" type="textarea"  placeholder="Post"  rows="7"></textarea>
+                            <div>
+                                <textarea className="mx-2 border border-purple-600 rounded-md  text-black w-full p-4" type="text" name="post" placeholder="Post"  rows="7"
+                                {...register("post",{
+                                    required: true,
+                                    message: "Debe completar este campo"
+                                })}
+                                ></textarea>
+                                {errors.post && <span className='text-xs italic mx-7'>{errors.post.message}</span>}
                             </div>
                             
                             <button type="submit" className="text-white bg-blue px-4 py-1 rounded-md mt-7 ml-[46%]">Add Post</button>
