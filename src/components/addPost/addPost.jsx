@@ -94,8 +94,7 @@ const AddPost = () => {
                             <div className="text-area-container">
                                 <textarea className=" border border-purple-600 rounded-md  text-black w-full p-4" type="text" name="post" placeholder="Post"  rows="7"
                                 {...register("post",{
-                                    required: true,
-                                    message: "Debe completar este campo"
+                                    required:"Debe completar este campo"
                                 })}
                                 ></textarea>
                                 {errors.post && <span className='text-xs italic mx-7'>{errors.post.message}</span>}
