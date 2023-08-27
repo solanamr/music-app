@@ -1,10 +1,7 @@
-//import React, { useContext } from "react";
-// import "../navbar/navbar.css"
 import headphonesLogo from "../../assets/headphones.png";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
-  //const loginStatus = useContext(LoginContext);
   return (
     <section className="border-b border-blue-300 py-2 bg-white">
       <div className="flex items-center justify-between  max-w-full px-[6%]">
@@ -16,7 +13,7 @@ const Navbar = () => {
         </div>
 
        <div>
-         <select className="rounded-md px-2 py-2 border border-black mr-6 w-1/2">
+         <select className="rounded-md px-2 py-2 border border-black mr-6 w-2/3">
            <option value=""> Categorías</option>
            <option className="" value="2">
              Entrevistas a Artistas
@@ -28,13 +25,10 @@ const Navbar = () => {
            <option value="7">Historia de la Musica</option>
            <option value="8">Instrumentos Musicales</option>
          </select>
-        
-         
-           {/* // LoginContext ?
-                 //     <Link to="/"  className="px-5 py-2 font-semibold bg-blue rounded-xl" >Logout</Link> : */}
+           
            <Link
              to="/login"
-             className="px-5 py-2 font-semibold bg-blue rounded-xl"
+             className="px-5 py-2 font-semibold bg-blue rounded-xl w-1/3"
            >
              Login
            </Link>
