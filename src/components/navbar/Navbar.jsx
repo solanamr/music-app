@@ -16,7 +16,7 @@ const Navbar = () => {
         </div>
 
        <div>
-         <select className="rounded-md px-2 py-2 border border-black mr-6">
+         <select className="rounded-md px-2 py-2 border border-black mr-6 w-1/2">
            <option value=""> Categorías</option>
            <option className="" value="2">
              Entrevistas a Artistas
