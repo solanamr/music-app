@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchBlogs } from "../../redux/states/blog/blogSlice";
-import temp from "../../assets/temp.avif";
+import records from "../../assets/records.jpg";
 import Comments from "../comments/Comments";
 import Navbar from "../navbar/Navbar";
 import Footer from "../footer/Footer";
@@ -41,7 +41,7 @@ const Detail = () => {
                       <p className="pl-[70%] pt-10">{formatDate(f.creationDate)}</p>
                       <h4 className="font-bold text-4xl pl-[33%]">{f.title}</h4>
                       <div className="flex pt-10 ml-40 items-center">
-                        <img src={temp} alt="" className="w-5/12 h-96"/>
+                      {f.image ? <img src={`data:image/jpg;base64,${f.image}`} alt="" className="w-5/12 h-96"/> :  <img src={records} alt="" className="w-5/12 h-96"/>}
                         <p className="w-5/12 pl-10">{f.text}</p>
                       </div>
                           <BsSuitHeart className="w-40 h-40"/>

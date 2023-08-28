@@ -6,6 +6,7 @@ const Comments = () => {
         <main>
             <section className="w-full">
                 <div className="border border-black w-96 h-20"></div>
+                
                 <div>
                     {
                         coment.map(c =>(

@@ -6,7 +6,7 @@ import { FiMail } from "react-icons/fi";
 const fontStyles = { margin: "5px", fontSize: '25px'};
 const Footer =()=> {
   return (
-    <footer className="bg-purple text-white py-3 flex justify-center items-center">
+    <footer className="bg-lightBlue text-white py-3 flex justify-center items-center">
       <div className="pr-40">
         <p>© {new Date().getFullYear()} Music Blog</p>
       </div>

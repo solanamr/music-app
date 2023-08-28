@@ -11,7 +11,7 @@ const Navbar = () => {
         <div>
           <Link to="/" className="flex">
             <img src={headphonesLogo} width={50} height={55}></img>
-            <p className="self-center px-2 font-semibold">MUSIC BLOG</p>
+            <p className="self-center px-2 font-semibold">ACCENTO MUSICAL</p>
           </Link>
         </div>
 

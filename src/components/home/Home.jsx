@@ -1,11 +1,10 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import { fetchBlogs } from "../../redux/states/blog/blogSlice";
-import confetti from "../../assets/confetti.jpg";
 import Blog from "../blog/Blog";
 import Navbar from "../navbar/Navbar";
 import Footer from "../footer/Footer";
+import AddBoton from "../addBoton/AddBoton";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -16,21 +15,33 @@ const Home = () => {
     dispatch(fetchBlogs());
   }, [dispatch]);
 
+  
+
   return (
     <section>
       <Navbar />
-      <img src={confetti} alt="" className="w-full h-screen" />
-      <div className="flex justify-center flex-wrap">
+      <div className="flex justify-center items-center pt-20">
+      <div className="text-center">
+        <h1 className="text-4xl font-bold text-lightBlue">Accento musical</h1>
+        <p className="text-2xl italic pt-5 text-purple">Explora el mundo a través del ritmo, donde la música encuentra su voz</p>
+      </div>
+    </div>
+      <div className="flex justify-center flex-wrap px-5">
         {blogsState.map((b, i) => (
           <div key={i}>
-            
-            
-                <Blog title={b.title} text={b.text} key={i} cat={b.category} id={b.id}/>
-            
+            <Blog
+              title={b.title}
+              img={b.image}
+              text={b.text}
+              key={i}
+              cat={b.category}
+              id={b.id}
+            />
           </div>
         ))}
       </div>
-      <Footer/>
+      <AddBoton/>
+      <Footer />
     </section>
   );
 };
