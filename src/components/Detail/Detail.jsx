@@ -33,18 +33,21 @@ const Detail = () => {
 
 
     return (
-        <section className="bg-lightGrey">
+        <section className="bg-lightGrey flex-col">
           <Navbar/>
                 {
                   idFilter.map((f, i) =>(
-                    <div key={i} className="">
+                    <div key={i} className=" flex flex-col items-center">
                       <p className="pl-[70%] pt-10">{formatDate(f.creationDate)}</p>
-                      <h4 className="font-bold text-4xl pl-[33%]">{f.title}</h4>
-                      <div className="flex pt-10 ml-40 items-center">
-                        <img src={temp} alt="" className="w-5/12 h-96"/>
-                        <p className="w-5/12 pl-10">{f.text}</p>
+                      <div className="w-5/6 flex justify-center align-center mt-6">
+                        <h4 className="font-bold text-4xl md:py-6">{f.title}</h4>
                       </div>
-                          <BsSuitHeart className="w-40 h-40"/>
+                      
+                      <div className="flex flex-col items-center w-5/6 md: my-6 ">
+                        <img src={temp} alt="" className=" mb-2 h-auto md:w-2/3 rounded-md"/>
+                        <p className="mt-4">{f.text}</p>
+                      </div>
+              
                     </div>
                   ))
                 }

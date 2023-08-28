@@ -4,16 +4,16 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   return (
     <section className="border-b border-blue-300 py-2 bg-white">
-      <div className="flex items-center justify-between  max-w-full px-[6%]">
+      <div className="flex items-center justify-between  max-w-full px-4 md:px-8">
         <div className="mr-6">
           <Link to="/" className="flex">
             <img src={headphonesLogo} width={50} height={55}></img>
-            <p className="self-center px-2 font-semibold">MUSIC BLOG</p>
+            <p className="self-center px-2 font-semibold md:px-4 text-lg">MUSIC BLOG</p>
           </Link>
         </div>
 
        <div className="flex">
-         <select className="rounded-md px-2 py-2 border border-black mr-6 w-2/3">
+         <select className="rounded-md px-2 py-2 border border-black ml-1 mr-4 w-2/3">
             <option value=""> Categorías</option>
             <option value="REVIEWS">Reseñas</option>                                  
             <option value="ARTIST_INTERVIEWS">Entrevista a Artistas</option>

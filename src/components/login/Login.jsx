@@ -52,7 +52,7 @@ const Login = () => {
                   type="text"
                   name="Email"
                   placeholder="Email"
-                  className="border-b-2 border-lightGrey bg-purple mt-10 mb-1 w-64 mx-auto"
+                  className="border-b-2 border-lightGrey bg-purple text-white mt-10 mb-1 w-64 mx-auto"
                   {...register("Email", {
                     //registra el input
                     required: {
@@ -73,7 +73,7 @@ const Login = () => {
                   type="password"
                   name="Password"
                   placeholder="Password"
-                  className="border-b-2 border-lightGrey bg-purple mt-5 w-64 mx-auto"
+                  className="border-b-2 border-lightGrey bg-purple mt-5 w-64 mx-auto text-white"
                   {...register("Password", {
                     required: {
                       value: true,
