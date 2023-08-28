@@ -32,26 +32,28 @@ const Login = () => {
   return (
     <main className="flex justify-center ">
       
-        <div className="w-full">
+      {/* La imagen desaparece para display de mobile. */}
+        <div className="hidden md:block w-full">
           <img src={login} alt="" className="h-screen w-full" />
         </div>
 
-        <div className="bg-purple h-screen w-full pt-20 ">
-          <div className="ml-[33%]">
-            <img className="mb-14 " src={headphones}/>
+        <div className="form-section bg-purple h-screen w-full pt-20 ">
+          <div className="headset-image flex justify-center items-center">
+            <img className="mb-14 inline" src={headphones}/>
           </div>
           <h1 className="text-white text-5xl text-center">WELCOME</h1>
 
           <form className="" onSubmit={handleSubmit(onSubmit)}>
             {" "}
             {/* handleSubmit valida los input antes de invocar onSubmit */}
-            <div className="ml-[38%]">
-              <div className="flex flex-col">
+            <div className="fields-container mx-auto">
+              <div className="email-field flex flex-col">
                 <input
                   type="text"
+                  name="Email"
                   placeholder="Email"
-                  className="border-b-2 border-lightGrey bg-purple mt-10 mb-1 w-60"
-                  {...register("email", {
+                  className="border-b-2 border-lightGrey bg-purple mt-10 mb-1 w-64 mx-auto"
+                  {...register("Email", {
                     //registra el input
                     required: {
                       value: true,
@@ -63,15 +65,16 @@ const Login = () => {
                     },
                   })}
                   />
-                  {errors.email && <span className='text-xs text-white italic self-start'>{errors.email.message}</span>}
+                  {errors.Email && <span className='text-xs text-white italic self-center'>{errors.Email.message}</span>}
               </div>
 
-              <div className="flex flex-col">
+              <div className="pass-field flex flex-col">
                 <input
                   type="password"
+                  name="Password"
                   placeholder="Password"
-                  className="border-b-2 border-lightGrey bg-purple mt-5 w-60"
-                  {...register("password", {
+                  className="border-b-2 border-lightGrey bg-purple mt-5 w-64 mx-auto"
+                  {...register("Password", {
                     required: {
                       value: true,
                       message: "El campo es obligatorio",
@@ -85,20 +88,20 @@ const Login = () => {
                     },
                   })}
                 />
-                {errors.password && <span className='text-xs text-white italic self-start mt-1'>{errors.password.message}</span>}
+                {errors.Password && <span className='text-xs text-white italic self-center mt-1'>{errors.Password.message}</span>}
               </div>
             </div>
-            <div>
+            <div class="flex justify-center">
               <button
                 type="submit"
-                className="text-white bg-blue px-4 py-1 rounded-md mt-7 ml-[46%]"
+                className="text-white bg-blue px-4 py-1 rounded-md mt-7 "
               >
                 Sign In
               </button>
             </div>
             <div className="flex justify-center">
               <p className="text-white pt-10">
-                Don´t have an account? <Link to="/register" > Register</Link>
+                Don't have an account? <Link to="/register" > Register</Link>
               </p>
             </div>
           </form>
