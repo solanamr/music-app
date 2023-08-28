@@ -50,9 +50,10 @@ const Login = () => {
               <div className="email-field flex flex-col">
                 <input
                   type="text"
+                  name="Email"
                   placeholder="Email"
                   className="border-b-2 border-lightGrey bg-purple mt-10 mb-1 w-64 mx-auto"
-                  {...register("email", {
+                  {...register("Email", {
                     //registra el input
                     required: {
                       value: true,
@@ -64,15 +65,16 @@ const Login = () => {
                     },
                   })}
                   />
-                  {errors.email && <span className='text-xs text-white italic self-start'>{errors.email.message}</span>}
+                  {errors.Email && <span className='text-xs text-white italic self-center'>{errors.Email.message}</span>}
               </div>
 
               <div className="pass-field flex flex-col">
                 <input
                   type="password"
+                  name="Password"
                   placeholder="Password"
                   className="border-b-2 border-lightGrey bg-purple mt-5 w-64 mx-auto"
-                  {...register("password", {
+                  {...register("Password", {
                     required: {
                       value: true,
                       message: "El campo es obligatorio",
@@ -86,7 +88,7 @@ const Login = () => {
                     },
                   })}
                 />
-                {errors.password && <span className='text-xs text-white italic self-start mt-1'>{errors.password.message}</span>}
+                {errors.Password && <span className='text-xs text-white italic self-center mt-1'>{errors.Password.message}</span>}
               </div>
             </div>
             <div class="flex justify-center">
