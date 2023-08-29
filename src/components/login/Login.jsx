@@ -2,7 +2,8 @@ import { Link, useNavigate } from "react-router-dom";
 import headphones from "../../assets/imgHeadphones.png";
 import login from "../../assets/login.jpg";
 import { useForm } from "react-hook-form";
-import axios from "axios";
+
+
 
 const Login = () => {
   const navigate = useNavigate();
@@ -20,6 +21,12 @@ const Login = () => {
         "http://localhost:5077/api/auth/login",
         data
       );
+      dispatch(login());
+      const jwtToken = res.data.token
+      localStorage.setItem('token', jwtToken);
+      if (res.status === 200) {
+        setIsLoggedIn(true)
+      }
       reset();
       navigate("/");
       console.log("anduvo");
@@ -27,6 +34,7 @@ const Login = () => {
     } catch (err) {
       console.error(err);
     }
+  
   };
 
   return (
