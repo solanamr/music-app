@@ -9,7 +9,7 @@ import AddBoton from "../addBoton/AddBoton";
 const Home = () => {
   const dispatch = useDispatch();
   const blogsState = useSelector((state) => state.blogs.blogs);
-  console.log(blogsState, "state");
+
 
   useEffect(() => {
     dispatch(fetchBlogs());

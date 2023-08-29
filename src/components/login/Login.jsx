@@ -1,11 +1,18 @@
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import headphones from "../../assets/imgHeadphones.png";
-import login from "../../assets/login.jpg";
+import loginn from "../../assets/login.jpg";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import { login, logout } from '../../redux/states/auth/authSlice';
+import { useDispatch } from 'react-redux';
+
 
 const Login = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const {
     register,
@@ -20,6 +27,10 @@ const Login = () => {
         "http://localhost:5077/api/auth/login",
         data
       );
+      dispatch(login());
+      if (res.status === 200) {
+        setIsLoggedIn(true)
+      }
       reset();
       navigate("/");
       console.log("anduvo");
@@ -29,12 +40,13 @@ const Login = () => {
     }
   };
 
+
   return (
     <main className="flex justify-center ">
       
       {/* La imagen desaparece para display de mobile. */}
         <div className="hidden md:block w-full">
-          <img src={login} alt="" className="h-screen w-full" />
+          <img src={loginn} alt="" className="h-screen w-full" />
         </div>
 
         <div className="form-section bg-purple h-screen w-full pt-20 ">
@@ -105,6 +117,7 @@ const Login = () => {
               </p>
             </div>
           </form>
+         
         </div>
 
     </main>

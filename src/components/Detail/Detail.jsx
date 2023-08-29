@@ -6,7 +6,7 @@ import records from "../../assets/records.jpg";
 import Comments from "../comments/Comments";
 import Navbar from "../navbar/Navbar";
 import Footer from "../footer/Footer";
-import { BsSuitHeart } from "react-icons/bs"
+
 
 const Detail = () => {
 
@@ -20,11 +20,12 @@ const Detail = () => {
   }, [dispatch]);
   
   const blogId = useSelector((state) => state.blogs.blogs);
-  console.log("🚀 ~ file: Detail.jsx:15 ~ Detail ~  blogId:",  blogId)
+  // console.log("🚀 ~ file: Detail.jsx:15 ~ Detail ~  blogId:",  blogId)
   
   const idFilter = blogId.filter((f) => f.id == id)
-  console.log("🚀 ~ file: Detail.jsx:17 ~ Detail ~ idFilter:", idFilter)
+
   
+  const idMap = idFilter.map(f  => f.id)
   
   const formatDate = (dateString) =>{
     const dateObject = new Date(dateString);
@@ -44,11 +45,10 @@ const Detail = () => {
                       {f.image ? <img src={`data:image/jpg;base64,${f.image}`} alt="" className="w-5/12 h-96"/> :  <img src={records} alt="" className="w-5/12 h-96"/>}
                         <p className="w-5/12 pl-10">{f.text}</p>
                       </div>
-                          <BsSuitHeart className="w-40 h-40"/>
                     </div>
                   ))
                 }
-            <Comments/>
+            <Comments postId={idMap}/>
             <Footer/>
         </section>
     );
