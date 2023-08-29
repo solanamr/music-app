@@ -3,17 +3,39 @@ import Navbar from "../navbar/Navbar";
 import Footer from "../footer/Footer"
 import "./addPost.css"
 import instrumentos from "../../assets/instrumentos.jpg";
+import axios from "axios";
 
 const AddPost = () => {
 
     const {
         register,
         handleSubmit,
+        reset,
         formState: { errors },
       } = useForm()
 
-    const onSubmit = evento => {
-        console.log(evento);
+
+
+  const jwtToken = localStorage.getItem('token');
+     
+    const onSubmit = async(data) => {
+        try {
+            console.log("antes try")
+            const res = await axios.post(
+              "http://localhost:5077/api/post",
+              data,
+              {
+                headers: {
+                    Authorization: `Bearer ${jwtToken}`
+              }
+              
+            });
+            console.log("dsp try");
+            reset();
+            return res;
+          } catch (err) {
+            console.error(err);
+          }
     }
 
     return(

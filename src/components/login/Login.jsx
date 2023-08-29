@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import { login, logout } from '../../redux/states/auth/authSlice';
 import { useDispatch } from 'react-redux';
+import Navbar2 from "../Navbar2/Navbar2";
 
 
 const Login = () => {
@@ -28,6 +29,8 @@ const Login = () => {
         data
       );
       dispatch(login());
+      const jwtToken = res.data.token
+      localStorage.setItem('token', jwtToken);
       if (res.status === 200) {
         setIsLoggedIn(true)
       }
@@ -42,8 +45,8 @@ const Login = () => {
 
 
   return (
-    <main className="flex justify-center ">
-      
+    <main className="flex-row justify-center ">
+      <Navbar2/>
       {/* La imagen desaparece para display de mobile. */}
         <div className="hidden md:block w-full">
           <img src={loginn} alt="" className="h-screen w-full" />

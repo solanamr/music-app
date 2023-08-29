@@ -3,6 +3,7 @@ import axios from "axios";
 
 export const EmptyState = {
     blogs: [],
+    blogsCopy: [],
     comments: [],
     comment: [],
     userId: 0
@@ -78,6 +79,7 @@ export const EmptyState = {
   
           const data  = action.payload;
           state.blogs = data.data;
+          state.blogsCopy = data.data;
           
           if (data.errors === "There is not data") {
             state.blogs = [];
