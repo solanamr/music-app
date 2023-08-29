@@ -34,11 +34,11 @@ const Detail = () => {
 
 
     return (
-        <section className="bg-lightGrey">
+        <section className="bg-lightGrey flex-col">
           <Navbar/>
                 {
                   idFilter.map((f, i) =>(
-                    <div key={i} className="">
+                    <div key={i} className=" flex flex-col items-center">
                       <p className="pl-[70%] pt-10">{formatDate(f.creationDate)}</p>
                       <h4 className="font-bold text-4xl pl-[33%]">{f.title}</h4>
                       <div className="flex pt-10 ml-40 items-center">

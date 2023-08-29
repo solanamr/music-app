@@ -33,7 +33,7 @@ const Navbar = () => {
         </div>
 
        <div className="flex">
-         <select className="rounded-md px-2 py-2 border border-black mr-6 w-2/3">
+         <select className="rounded-md px-2 py-2 border border-black ml-1 mr-4 w-2/3">
             <option value=""> Categorías</option>
             <option value="REVIEWS">Reseñas</option>                                  
             <option value="ARTIST_INTERVIEWS">Entrevista a Artistas</option>
