@@ -2,11 +2,11 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchBlogs } from "../../redux/states/blog/blogSlice";
-import temp from "../../assets/temp.avif";
+import records from "../../assets/records.jpg";
 import Comments from "../comments/Comments";
 import Navbar from "../navbar/Navbar";
 import Footer from "../footer/Footer";
-import { BsSuitHeart } from "react-icons/bs"
+
 
 const Detail = () => {
 
@@ -20,11 +20,12 @@ const Detail = () => {
   }, [dispatch]);
   
   const blogId = useSelector((state) => state.blogs.blogs);
-  console.log("🚀 ~ file: Detail.jsx:15 ~ Detail ~  blogId:",  blogId)
+  // console.log("🚀 ~ file: Detail.jsx:15 ~ Detail ~  blogId:",  blogId)
   
   const idFilter = blogId.filter((f) => f.id == id)
-  console.log("🚀 ~ file: Detail.jsx:17 ~ Detail ~ idFilter:", idFilter)
+
   
+  const idMap = idFilter.map(f  => f.id)
   
   const formatDate = (dateString) =>{
     const dateObject = new Date(dateString);
@@ -39,19 +40,15 @@ const Detail = () => {
                   idFilter.map((f, i) =>(
                     <div key={i} className=" flex flex-col items-center">
                       <p className="pl-[70%] pt-10">{formatDate(f.creationDate)}</p>
-                      <div className="w-5/6 flex justify-center align-center mt-6">
-                        <h4 className="font-bold text-4xl md:py-6">{f.title}</h4>
+                      <h4 className="font-bold text-4xl pl-[33%]">{f.title}</h4>
+                      <div className="flex pt-10 ml-40 items-center">
+                      {f.image ? <img src={`data:image/jpg;base64,${f.image}`} alt="" className="w-5/12 h-96"/> :  <img src={records} alt="" className="w-5/12 h-96"/>}
+                        <p className="w-5/12 pl-10">{f.text}</p>
                       </div>
-                      
-                      <div className="flex flex-col items-center w-5/6 md: my-6 ">
-                        <img src={temp} alt="" className=" mb-2 h-auto md:w-2/3 rounded-md"/>
-                        <p className="mt-4">{f.text}</p>
-                      </div>
-              
                     </div>
                   ))
                 }
-            <Comments/>
+            <Comments postId={idMap}/>
             <Footer/>
         </section>
     );

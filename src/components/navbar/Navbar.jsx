@@ -1,14 +1,34 @@
+
 import headphonesLogo from "../../assets/headphones.png";
 import { Link } from "react-router-dom";
+import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../../redux/states/auth/authSlice';
 
 const Navbar = () => {
+
+  const dispatch = useDispatch();
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+
+  const handleLogout = async () => {
+    try {
+      const response = await axios.post('http://localhost:5077/api/Auth/logout');
+
+      if (response.status === 200) {
+        dispatch(logout());
+      }
+    } catch (error) {
+      console.error('Error en el cierre de sesión', error);
+    }
+  };
+
   return (
-    <section className="border-b border-blue-300 py-2 bg-white">
-      <div className="flex items-center justify-between  max-w-full px-4 md:px-8">
+    <nav className="border-b border-blue-300 py-2 bg-white">
+      <div className="flex items-center justify-between  max-w-full px-[6%]">
         <div className="mr-6">
           <Link to="/" className="flex">
             <img src={headphonesLogo} width={50} height={55}></img>
-            <p className="self-center px-2 font-semibold md:px-4 text-lg">MUSIC BLOG</p>
+            <p className="self-center px-2 font-semibold">ACCENTO MUSICAL</p>
           </Link>
         </div>
 
@@ -26,17 +46,21 @@ const Navbar = () => {
             <option value="MUSIC_HISTORY">Historia de la Musica</option>
             <option value="MUSICAL_INSTRUMENTS0">Instrumentos Musicales</option>
          </select>
-           
-           <Link
+
+         {isLoggedIn ? (
+        <button onClick={handleLogout} className="px-5 py-2 text-center font-semibold bg-blue rounded-xl w-1/3">Logout</button>
+      ) : (
+        <Link
              to="/login"
              className="px-5 py-2 text-center font-semibold bg-blue rounded-xl w-1/3"
            >
              Login
            </Link>
+      )}   
        </div>
         
       </div>
-    </section>
+    </nav>
   );
 };
 

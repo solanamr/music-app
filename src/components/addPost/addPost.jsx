@@ -10,9 +10,11 @@ const AddPost = () => {
     const {
         register,
         handleSubmit,
+        reset,
         formState: { errors },
       } = useForm()
 
+<<<<<<< HEAD
       const jwtToken = localStorage.getItem('token');
 
       const onSubmit = async(data) => {
@@ -33,6 +35,31 @@ const AddPost = () => {
               console.error(err);
             }
       }
+=======
+
+
+  const jwtToken = localStorage.getItem('token');
+     
+    const onSubmit = async(data) => {
+        try {
+            console.log("antes try")
+            const res = await axios.post(
+              "http://localhost:5077/api/post",
+              data,
+              {
+                headers: {
+                    Authorization: `Bearer ${jwtToken}`
+              }
+              
+            });
+            console.log("dsp try");
+            reset();
+            return res;
+          } catch (err) {
+            console.error(err);
+          }
+    }
+>>>>>>> dd2f9f9a103c254cf1f57a72c33a86f787b0126f
 
     return(
         <div>
