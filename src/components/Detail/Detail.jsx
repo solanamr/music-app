@@ -28,11 +28,16 @@ const Detail = () => {
   
 algo.forEach(id => {id});
   
-  const idFilter = blogId.filter((f) => f.id == id)
+  const idState = useSelector((state) => state.blogs.blogs.map(blog => blog.id));
+ 
 
+  const idMap = idState.forEach(id => {id});
   
-  const idMap = idFilter.map(f  => f.id)
-
+  const idFilter = blogId.filter((f) => f.id == id)
+  console.log(idFilter)
+  
+  
+  
   
   const formatDate = (dateString) =>{
     const dateObject = new Date(dateString);
@@ -46,16 +51,29 @@ algo.forEach(id => {id});
                 {
                   idFilter.map((f, i) =>(
                     <div key={i} className=" flex flex-col items-center">
-                      <p className="pl-[70%] pt-10">{formatDate(f.creationDate)}</p>
-                      <h4 className="font-bold text-4xl pl-[33%]">{f.title}</h4>
-                      <div className="flex pt-10 ml-40 items-center">
-                      {f.image ? <img src={`data:image/jpg;base64,${f.image}`} alt="" className="w-5/12 h-96"/> :  <img src={records} alt="" className="w-5/12 h-96"/>}
-                        <p className="w-5/12 pl-10">{f.text}</p>
+                      <p className="pl-[70%] pt-10 mb-4">{formatDate(f.creationDate)}</p>
+                      <div className="flex justify-center w-3/4 mt-8">
+                        <h4 className="font-bold text-4xl w-3/4 text-center">{f.title}</h4>
+                      </div>
+                      
+                      <div className=" flex flex-col pt-4 items-center">
+                      <div className="flex-col my-6">
+                      <div className="flex justify-center mb-4">
+                          {f.image ? <img src={`data:image/jpg;base64,${f.image}`} alt="" className="w-2/3 h-auto inline self-center rounded-md md:w-1/2"/> :  <img src={records} alt="" className="w-2/3 h-auto  inline self-center rounded-md md:w-1/2"/>}  
+                      </div>
+                      <div className="flex justify-center mt-2">
+                        <p className="mx-4 w-5/6 text-justify">{f.text}</p>
+                      </div>
+                        
+                      </div>
                       <Comments postId={f.id}/>
+                      
+                      
                       </div>
                     </div>
                   ))
                 }
+           
             <Footer/>
         </section>
     );

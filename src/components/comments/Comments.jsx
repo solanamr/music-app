@@ -3,31 +3,23 @@ import coment from "./coments.json";
 import { useForm } from "react-hook-form";
 import { BsSuitHeart } from "react-icons/bs"
 import axios from "axios";
-import { fetchComments, fetchUserComments } from "../../redux/states/blog/blogSlice";
+import { fetchBlogs } from "../../redux/states/blog/blogSlice";
+
 import { useDispatch, useSelector } from 'react-redux';
 
 const Comments = ({ postId }) => {
 
-    const [isChecked, setIsChecked] = useState(false)
-
+    const [input, setInput] = useState({Text:""})
+    console.log(input)
     const dispatch = useDispatch();
-  const coments = useSelector((state) => state.blogs.comments);
+    const coments = useSelector((state) => state.blogs.blogs);
 
-//   const {comments, userId} = useSelector((state) => state.blogs);
-//   console.log("🚀 ~ file: Comments.jsx:14 ~ Comments ~ comments:", comments)
 
-    const checked = () => {
-        setIsChecked(true)
-    }
 
     useEffect(() => {
-        dispatch(fetchComments(postId));
-      }, [dispatch, postId]);
+        dispatch(fetchBlogs());
+      }, [dispatch]);
 
-    //   useEffect(() => {
-    //     dispatch(fetchUserComments(userId));
-    //   }, [dispatch, userId]);
-    
   const {
     register,
     handleSubmit,
@@ -35,35 +27,62 @@ const Comments = ({ postId }) => {
     formState: { errors },
   } = useForm();
 
+  const handleChange = (e) => {   
+    setInput({
+    ...input,
+    [e.target.name] : e.target.value, 
+    
+    })
+    console.log(input)
+}
+const jwtToken = localStorage.getItem('token');
 
-  const onSubmit = async (data) => {
+const submit = async(data) =>{
+
+
     try {
-    //   const res = await axios.post(
-    //     "http://localhost:5077/api/comments",
-    //     data
-    //   );
-      reset();
-      data.postId = postId
-      console.log(data);
+        const res = await axios.post(
+          "http://localhost:5077/api/comments",
+          {   data:data,
+              postId: postId
+          },
+          {
+              headers: {
+                  Authorization: `Bearer ${jwtToken}`
+            }
+          },
+          alert("comentario hecho")
+        );
+        // reset();
+        //data.postId = postId
+        console.log(data);
+  
+      //   return res
+      } catch (err) {
 
-    //   return res
-    } catch (err) {
-      console.error(err);
-    }
-  };
+        console.error(err);
+      }
+      
+ } 
+
+ 
+
+
+//   const onSubmit = async (data) => {
+//     console.log(data)
+
+    
+//   };
 
 
 
     return (
         <main>
             <section className="flex-col">
-                <form onSubmit={handleSubmit(onSubmit)}  className="flex-column ">
+                <form onSubmit={(e) => {submit(e)}}  className="flex-column ">
                     <div className="flex items-center flex-col">
-                         <textarea className="mx-2 my-1 border border-purple-600 rounded-md  text-black p-4 w-5/6 flex-col" type="text" name="comment" id="comment" placeholder="Comment"  rows="1"
-                            {...register("text",{
-                                required:  "Debe completar este campo"
-                                // message: "Debe completar este campo"
-                            })}
+                        <textarea value={input.Text} name="Text" onChange={handleChange} className="mx-2 my-1 border border-purple-600 rounded-md  text-black p-4 w-5/6 flex-col" type="text"  id="Text" placeholder="Comment"  rows="1"
+                           
                         ></textarea>
                         {errors.text && <span className='block text-xs italic flex  self-center'>{errors.comment.message}</span>} 
                     </div>
