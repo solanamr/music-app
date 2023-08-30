@@ -5,6 +5,33 @@ import "./addPost.css"
 import instrumentos from "../../assets/instrumentos.jpg";
 import axios from "axios";
 
+
+// function validacion(input){
+//     const errores = {}
+//     if(!input.Title){
+//         errores.Title = "Debe colocar un Título";
+//     }
+//      if(!input.Category){
+//         errores.Category = "Debe seleccionar una categoría";
+//     }
+//      if(!input.Image){
+//         errores.Image = "Debe incluir una imagen";
+//     } 
+//     if(!input.Text){
+//         errores.Text = "Debe completar este campo";
+//     }
+//     return errores
+// }
+// // /*
+// en submit
+//  e.preventDefault()
+//         if(!input.Title || !input.Category || !input.Image || !input.Text){
+//             return alert("Completar los campos")
+//           }
+
+// */ 
+
+
 const AddPost = () => {
 
     const {
@@ -36,6 +63,7 @@ const AddPost = () => {
             console.error(err);
         }
     }
+    const [errores, setErrores] = useState({})
 
     return(
         <div>
@@ -71,7 +99,7 @@ const AddPost = () => {
                                 }
                                 })}
                                 />
-                                {errors.Title && <span className='text-xs italic mx-1 mt-1'>{errors.Title.message}</span>}
+                                {errores.Title && <span className='text-xs italic mx-1 mt-1'>{errores.Title}</span>}
                             </div>
                             <div className="cat-file-container flex">
                                     <select  className="rounded-md px-2 py-2 border border-purple-600 my-1" 
@@ -97,7 +125,7 @@ const AddPost = () => {
                                             
                                                 
                                     </select>
-                                    {errors.Category && <span className='text-xs italic mx-1 self-center'>{errors.Category.message}</span>}
+                                    {errorses.Category && <span className='text-xs italic mx-1 self-center'>{errores.Category}</span>}
                                      {/* <div className="file-container mt-2 md:mt-0 md:ml-2 flex">
                                     <label htmlFor="file"  className="md:w-24" > Agregá una imagen:</label> */}
                                 
@@ -118,7 +146,7 @@ const AddPost = () => {
                                     required:"Debe completar este campo"
                                 })}
                                 ></textarea>
-                                {errors.Text && <span className='text-xs italic mx-1'>{errors.Text.message}</span>}
+                                {errores.Text && <span className='text-xs italic mx-1'>{errores.Text}</span>}
                             </div>
                             <div className="button-add flex justify-center">
                                 <button type="submit" className="text-white bg-blue px-4 py-1 rounded-md mt-7">Add Post</button>
