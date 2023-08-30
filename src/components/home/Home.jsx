@@ -6,6 +6,7 @@ import Navbar from "../navbar/Navbar";
 import Footer from "../footer/Footer";
 import AddBoton from "../addBoton/AddBoton";
 
+
 const Home = () => {
   const dispatch = useDispatch();
   const blogsState = useSelector((state) => state.blogs.blogs);
@@ -45,6 +46,7 @@ const Home = () => {
       }
       </div>
       <AddBoton/>
+
       <Footer />
     </section>
   );
