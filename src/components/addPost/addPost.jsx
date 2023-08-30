@@ -4,6 +4,7 @@ import Footer from "../footer/Footer"
 import "./addPost.css"
 import instrumentos from "../../assets/instrumentos.jpg";
 import axios from "axios";
+import { useState } from "react";
 
 const AddPost = () => {
 
@@ -14,28 +15,38 @@ const AddPost = () => {
         formState: { errors },
       } = useForm()
 
+      const [image, setImage] = useState(null)
+    //   console.log("🚀 ~ file: addPost.jsx:19 ~ AddPost ~ image:", image)
 
+      const handleImageChange = (event) => {
+        console.log("entro")
+        const selectedFile = event.target.files[0]; // Obtén el primer archivo seleccionado
+  
+  // Aquí puedes hacer lo que necesites con el archivo, como mostrar una vista previa o enviarlo al servidor
+  console.log(selectedFile);
+      };
 
   const jwtToken = localStorage.getItem('token');
      
     const onSubmit = async(data) => {
-        try {
-            console.log("antes try")
-            const res = await axios.post(
-              "http://localhost:5077/api/post",
-              data,
-              {
-                headers: {
-                    Authorization: `Bearer ${jwtToken}`
-              }
+        console.log(data)
+        // try {
+        //     console.log("antes try")
+        //     const res = await axios.post(
+        //       "http://localhost:5077/api/post",
+        //       data,
+        //       {
+        //         headers: {
+        //             Authorization: `Bearer ${jwtToken}`
+        //       }
               
-            });
-            console.log("dsp try");
-            reset();
-            return res;
-          } catch (err) {
-            console.error(err);
-          }
+        //     });
+        //     console.log("dsp try");
+        //     reset();
+        //     return res;
+        //   } catch (err) {
+        //     console.error(err);
+        //   }
     }
 
     return(
@@ -102,12 +113,11 @@ const AddPost = () => {
                                 <div className="file-container mt-2 md:mt-0 md:ml-2 flex">
                                     <label htmlFor="file"  className="md:w-24" > Agregá una imagen:</label>
                                 
-                                    <input  className="" type="file"  name="Image" accept="image/png, image/jpeg"
+                                    <input  className="" type="file" onChange={handleImageChange} name="Image" accept="image/*"
                                     {...register("Image", {                                 
                                         required:{
-                                            value:false,
+                                            value:true,
                                         },
-                                    
                                         })}
                                     />
                                 </div>

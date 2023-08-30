@@ -106,7 +106,7 @@ const Login = () => {
                 {errors.Password && <span className='text-xs text-white italic self-center mt-1'>{errors.Password.message}</span>}
               </div>
             </div>
-            <div class="flex justify-center">
+            <div className="flex justify-center">
               <button
                 type="submit"
                 className="text-white bg-blue px-4 py-1 rounded-md mt-7 "

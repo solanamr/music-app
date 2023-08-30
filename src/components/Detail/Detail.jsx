@@ -21,11 +21,18 @@ const Detail = () => {
   
   const blogId = useSelector((state) => state.blogs.blogs);
   // console.log("🚀 ~ file: Detail.jsx:15 ~ Detail ~  blogId:",  blogId)
+
+  const algo = useSelector((state) => state.blogs.blogs.map(blog => blog.id));
+  console.log("🚀 ~ file: Detail.jsx:26 ~ Detail ~ algo:", algo)
+
+  
+algo.forEach(id => {id});
   
   const idFilter = blogId.filter((f) => f.id == id)
 
   
   const idMap = idFilter.map(f  => f.id)
+
   
   const formatDate = (dateString) =>{
     const dateObject = new Date(dateString);
@@ -44,11 +51,11 @@ const Detail = () => {
                       <div className="flex pt-10 ml-40 items-center">
                       {f.image ? <img src={`data:image/jpg;base64,${f.image}`} alt="" className="w-5/12 h-96"/> :  <img src={records} alt="" className="w-5/12 h-96"/>}
                         <p className="w-5/12 pl-10">{f.text}</p>
+                      <Comments postId={f.id}/>
                       </div>
                     </div>
                   ))
                 }
-            <Comments postId={idMap}/>
             <Footer/>
         </section>
     );

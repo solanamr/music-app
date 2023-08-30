@@ -16,8 +16,8 @@ export const EmptyState = {
     "blog/fetchBlogs", async () => {
       try {
         const res = await axios.get("http://localhost:5077/api/post");
-        // console.log("🚀  res:", res.data)
-        const data = await res.data
+        // console.log("🚀  res:", res.data.$values)
+        const data = await res.data.$values
         return {data: data};
 
       } catch (error) {
@@ -29,7 +29,7 @@ export const EmptyState = {
   export const fetchComments = createAsyncThunk(
     'blog/fetchComments', async (postId) => {
     const response = await axios.get(`http://localhost:5077/api/comments/post/${postId}`);
-    const data = response.data
+    const data = response.data.$values
     return data;
 
   });
