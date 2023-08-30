@@ -18,7 +18,7 @@ const Home = () => {
   
 
   return (
-    <section className="h-full w-[150%] lg:w-full">
+    <section className="h-full ">
       <Navbar />
       <div className="flex justify-center items-center pt-20">
       <div className="text-center">

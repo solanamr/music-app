@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import background from "../../assets/register.jpg";
+import background from "../../assets/ecualizador.avif";
 import axios from "axios";
 import Navbar2 from "../Navbar2/Navbar2";
 
@@ -35,17 +35,20 @@ const Register = () => {
     <section>
     <Navbar2/>
           <div
-        className="flex flex-col items-center justify-center h-screen"
+        className="flex flex-col items-center justify-center h-screen bg-cover bg-no-repeat bg-center"
         style={{
           backgroundImage: `url(${background})`,
           backgroundSize: "contain",
         }}
       >
-        <div className="bg-black lg:bg-white lg:bg-opacity-20 lg:backdrop-blur-lg lg:border lg:border-white lg:drop-shadow-lg flex-row justify-center  max-w-sm   rounded-lg text-white">
-          <h1 className="title m-6 text-4xl font-bold justify-center text-center uppercase">
+        {/* <div className="bg-lightBlue lg:bg-white lg:bg-opacity-20 lg:backdrop-blur-lg lg:border lg:border-white lg:drop-shadow-lg flex-row justify-center  max-w-sm   rounded-lg text-white"></div> */}
+        <div className="bg-lightBlue  lg:border lg:border-white lg:drop-shadow-lg flex-row justify-center  max-w-sm   rounded-lg text-white">
+         <div className="mt-6">
+         <h1 className="title m-6 text-4xl font-bold justify-center text-center uppercase">
             Register
           </h1>
-      
+         </div>
+          
           <form
             className=" py-10 px-5 flex-row"
             onSubmit={handleSubmit(onSubmit)}
@@ -152,7 +155,7 @@ const Register = () => {
               type="submit"
       
               // value="submit"
-              className=" text-white bg-blue px-6 py-1 rounded-md ml-28 mt-5 mb-5"
+              className=" text-white bg-purple px-6 py-1 rounded-md ml-28 mt-5 mb-5"
             >
               Sign Up
             </button>

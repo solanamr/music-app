@@ -26,27 +26,7 @@ export const EmptyState = {
     }
   );
 
-  export const fetchComments = createAsyncThunk(
-    'blog/fetchComments', async (postId) => {
-    const response = await axios.get(`http://localhost:5077/api/comments/post/${postId}`);
-    const data = response.data
-    return data;
 
-  });
-
-  export const fetchUserComments = createAsyncThunk('blog/fetchUserComments', async (userId) => {
-    const response = await axios.get(`http://localhost:5077/api/comments/user/${userId}`);
-    
-    console.log("🚀 ~ file: blogSlice.js:38 ~ fetchUserComments ~ response:", response.data)
-    // Aquí asumo que el userId está en la respuesta, ajusta según la estructura real de la respuesta
-    const obtainedUserId = response.data.userId;
-    
-    
-    return {
-      comments: response.data.comments,
-      userId: obtainedUserId
-    };
-  });
 
 
 
@@ -87,38 +67,8 @@ export const EmptyState = {
           
         });
 
-      builder
-        .addCase(fetchComments.pending, (state, action) => {
-          state.status = "loading";
-        })
-        .addCase(fetchComments.rejected, (state, action) => {
-          state.status = "error";
-        })
-        .addCase(fetchComments.fulfilled, (state, action) => {
-          state.status = "succeeded";
-  
-          const data  = action.payload;
-          state.comments = data;
-          
-          if (data.errors === "There is not data") {
-            state.comments = [];
-          }
-          
-        });
-      builder
-        .addCase(fetchUserComments.pending, (state, action) => {
-          state.status = "loading";
-        })
-        .addCase(fetchUserComments.rejected, (state, action) => {
-          state.status = "error";
-        })
-        .addCase(fetchUserComments.fulfilled, (state, action) => {
-          state.status = "succeeded";
-  
-          state.comment = action.payload.comments;
-      state.userId = action.payload.userId;
-          
-        });
+     
+      
     },
   });
 

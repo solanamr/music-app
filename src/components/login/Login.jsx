@@ -3,14 +3,10 @@ import { Link, useNavigate } from "react-router-dom";
 import headphones from "../../assets/imgHeadphones.png";
 import loginn from "../../assets/login.jpg";
 import { useForm } from "react-hook-form";
-<<<<<<< HEAD
-
-=======
 import axios from "axios";
 import { login, logout } from '../../redux/states/auth/authSlice';
 import { useDispatch } from 'react-redux';
 import Navbar2 from "../Navbar2/Navbar2";
->>>>>>> dd2f9f9a103c254cf1f57a72c33a86f787b0126f
 
 
 const Login = () => {
@@ -53,11 +49,12 @@ const Login = () => {
     <main className="flex-row justify-center ">
       <Navbar2/>
       {/* La imagen desaparece para display de mobile. */}
+      <div className="flex">
         <div className="hidden md:block w-full">
-          <img src={loginn} alt="" className="h-screen w-full" />
+          <img src={loginn} alt="" className="h-screen w-full"/>
         </div>
 
-        <div className="form-section bg-purple h-screen w-full pt-20 ">
+        <div className="form-section flex flex-col justify-center bg-purple h-screen w-full">
           <div className="headset-image flex justify-center items-center">
             <img className="mb-14 inline" src={headphones}/>
           </div>
@@ -72,7 +69,7 @@ const Login = () => {
                   type="text"
                   name="Email"
                   placeholder="Email"
-                  className="border-b-2 border-lightGrey bg-purple text-white mt-10 mb-1 w-64 mx-auto"
+                  className="border-b-2 border-lightGrey bg-purple text-white mt-10 mb-1  mx-auto"
                   {...register("Email", {
                     //registra el input
                     required: {
@@ -93,7 +90,7 @@ const Login = () => {
                   type="password"
                   name="Password"
                   placeholder="Password"
-                  className="border-b-2 border-lightGrey bg-purple mt-5 w-64 mx-auto text-white"
+                  className="border-b-2 border-lightGrey bg-purple mt-5 mx-auto text-white"
                   {...register("Password", {
                     required: {
                       value: true,
@@ -127,7 +124,7 @@ const Login = () => {
           </form>
          
         </div>
-
+      </div>
     </main>
   );
 };

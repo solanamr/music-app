@@ -14,33 +14,10 @@ const AddPost = () => {
         formState: { errors },
       } = useForm()
 
-<<<<<<< HEAD
-      const jwtToken = localStorage.getItem('token');
-
-      const onSubmit = async(data) => {
-          try {
-              const res = await axios.post(
-                "http://localhost:5077/api/post",
-                data,
-                {
-                  headers: {
-                      Authorization: `Bearer ${jwtToken} `
-                }
-              }
-              );
-              reset();
-              console.log(data);
-              return res;
-            } catch (err) {
-              console.error(err);
-            }
-      }
-=======
-
-
-  const jwtToken = localStorage.getItem('token');
+    const jwtToken = localStorage.getItem('token');
      
     const onSubmit = async(data) => {
+        console.log(data)
         try {
             console.log("antes try")
             const res = await axios.post(
@@ -55,11 +32,10 @@ const AddPost = () => {
             console.log("dsp try");
             reset();
             return res;
-          } catch (err) {
+            } catch (err) {
             console.error(err);
-          }
+        }
     }
->>>>>>> dd2f9f9a103c254cf1f57a72c33a86f787b0126f
 
     return(
         <div>
@@ -83,7 +59,7 @@ const AddPost = () => {
                         </div> 
 
                         <div className="title-field text-black flex justify-center flex-col">
-                                <input type="text" className="w-full border border-purple-600 rounded-md  text-black p-1"  name="Title" placeholder="Title"
+                                <input type="text" className="w-full border border-purple-600 rounded-md  text-black p-1"   placeholder="Title"
                                 {...register("Title", {                                 
                                 required:{
                                     value:true,
@@ -98,7 +74,7 @@ const AddPost = () => {
                                 {errors.Title && <span className='text-xs italic mx-1 mt-1'>{errors.Title.message}</span>}
                             </div>
                             <div className="cat-file-container flex">
-                                    <select name="Category" className="rounded-md px-2 py-2 border border-purple-600 my-1" 
+                                    <select  className="rounded-md px-2 py-2 border border-purple-600 my-1" 
                                     {...register("Category",
                                     { required: {
                                         value:true,
@@ -122,22 +98,22 @@ const AddPost = () => {
                                                 
                                     </select>
                                     {errors.Category && <span className='text-xs italic mx-1 self-center'>{errors.Category.message}</span>}
-                                <div className="file-container mt-2 md:mt-0 md:ml-2 flex">
-                                    <label htmlFor="file"  className="md:w-24" > Agregá una imagen:</label>
+                                     {/* <div className="file-container mt-2 md:mt-0 md:ml-2 flex">
+                                    <label htmlFor="file"  className="md:w-24" > Agregá una imagen:</label> */}
                                 
-                                    <input  className="" type="file"  name="Image" accept="image/png, image/jpeg"
+                                    {/* <input  className="" type="file"  name="Image" accept="image/png, image/jpeg"
                                     {...register("Image", {                                 
                                         required:{
                                             value:false,
                                         },
                                     
                                         })}
-                                    />
-                                </div>
+                                    /> */}
+                                    {/* </div> */}
                             </div>
                            
                             <div className="text-area-container">
-                                <textarea className=" border border-purple-600 rounded-md  text-black w-full p-4" type="text" name="Text" placeholder="Post"  rows="7"
+                                <textarea className=" border border-purple-600 rounded-md  text-black w-full p-4" type="text"  placeholder="Post"  rows="7"
                                 {...register("Text",{
                                     required:"Debe completar este campo"
                                 })}
