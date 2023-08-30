@@ -44,7 +44,7 @@ const Detail = () => {
                     <div key={i} className=" flex flex-col items-center">
                       <p className="pl-[70%] pt-10 mb-4">{formatDate(f.creationDate)}</p>
                       <div className="flex justify-center w-3/4 mt-8">
-                        <h4 className="font-bold text-4xl w-3/4 text-center">{f.title}</h4>
+                        <h4 className="font-bold text-2xl  text-center md:text-4xl ">{f.title}</h4>
                       </div>
                       
                       <div className=" flex flex-col pt-4 items-center">
