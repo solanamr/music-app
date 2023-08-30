@@ -30,23 +30,23 @@ const AddPost = () => {
      
     const onSubmit = async(data) => {
         console.log(data)
-        // try {
-        //     console.log("antes try")
-        //     const res = await axios.post(
-        //       "http://localhost:5077/api/post",
-        //       data,
-        //       {
-        //         headers: {
-        //             Authorization: `Bearer ${jwtToken}`
-        //       }
+        try {
+            console.log("antes try")
+            const res = await axios.post(
+              "http://localhost:5077/api/post",
+              data,
+              {
+                headers: {
+                    Authorization: `Bearer ${jwtToken}`
+              }
               
-        //     });
-        //     console.log("dsp try");
-        //     reset();
-        //     return res;
-        //   } catch (err) {
-        //     console.error(err);
-        //   }
+            });
+            console.log("dsp try");
+            reset();
+            return res;
+          } catch (err) {
+            console.error(err);
+          }
     }
 
     return(
@@ -110,7 +110,7 @@ const AddPost = () => {
                                                 
                                     </select>
                                     {errors.Category && <span className='text-xs italic mx-1 self-center'>{errors.Category.message}</span>}
-                                <div className="file-container mt-2 md:mt-0 md:ml-2 flex">
+                                {/* <div className="file-container mt-2 md:mt-0 md:ml-2 flex">
                                     <label htmlFor="file"  className="md:w-24" > Agregá una imagen:</label>
                                 
                                     <input  className="" type="file" onChange={handleImageChange} name="Image" accept="image/*"
@@ -120,7 +120,7 @@ const AddPost = () => {
                                         },
                                         })}
                                     />
-                                </div>
+                                </div> */}
                             </div>
                            
                             <div className="text-area-container">
