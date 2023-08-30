@@ -7,18 +7,28 @@ import { fetchBlogs } from "../../redux/states/blog/blogSlice";
 
 import { useDispatch, useSelector } from 'react-redux';
 
+function validacion(input){
+    const errores = {}
+    if(!input.Text){
+        errores.Text = "Debe agregar un comentario";
+    }
+   
+    return errores
+}
+
 const Comments = ({ postId }) => {
 
     const [input, setInput] = useState({Text:""})
     console.log(input)
     const dispatch = useDispatch();
     const coments = useSelector((state) => state.blogs.blogs);
+    
 
 
 
     useEffect(() => {
         dispatch(fetchBlogs());
-      }, [dispatch]);
+    }, [dispatch]);
 
   const {
     register,
@@ -27,17 +37,27 @@ const Comments = ({ postId }) => {
     formState: { errors },
   } = useForm();
 
-  const handleChange = (e) => {   
+  const handleChange = (e) => { 
+    
+    
     setInput({
     ...input,
     [e.target.name] : e.target.value, 
     
     })
+    setErrores(validacion({
+        ...input,
+        [e.target.name]: e.target.value
+    }))
+    
     console.log(input)
 }
 
-const submit = async(data) =>{
-
+const submit = async(data,e) =>{
+    e.preventDefault()
+    if(!input.Text ){
+        return alert("Completar los campos")
+      }
 
     try {
         const res = await axios.post(
@@ -83,12 +103,13 @@ const submit = async(data) =>{
                         <textarea value={input.Text} name="Text" onChange={handleChange} className="mx-2 my-1 border border-purple-600 rounded-md  text-black p-4 w-5/6 flex-col" type="text"  id="Text" placeholder="Comment"  rows="1"
                            
                         ></textarea>
-                        {errors.text && <span className='block text-xs italic flex  self-center'>{errors.comment.message}</span>} 
+                        {errores.Text && <span className='block text-xs italic flex  self-center'>{errores.Text}</span>} 
                     </div>
                     <div className="flex justify-center mb-2">
                         <button
                             type="submit"
                             className="text-white bg-blue px-2 py-1 rounded-md mt-1 "
+                            disabled={Object.keys(errores).length}
                         > 
                             Add comment
                         </button>
