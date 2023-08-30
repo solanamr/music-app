@@ -30,8 +30,8 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="border-b border-blue-300 py-2 bg-white">
-      <div className="flex items-center justify-between  max-w-full px-[6%]">
+    <nav className="border-b border-blue-300 py-2 bg-white w-full">
+      <div className="flex items-center justify-between  max-w-full px-[3%]">
         <div className="mr-6">
           <Link to="/" className="flex">
             <img src={headphonesLogo} width={50} height={55}></img>
@@ -40,7 +40,7 @@ const Navbar = () => {
         </div>
 
        <div className="flex">
-         <select onChange={e => {handleCategoryChange(e)}} className="rounded-md px-2 py-2 border border-black ml-1 mr-4 w-2/3">
+         <select onChange={e => {handleCategoryChange(e)}} className="rounded-md px-2 py-2 border border-black ml-1 mr-2 w-2/3 md:mr-4">
             <option value=""> Categorías</option>
             <option value="REVIEWS">Reseñas</option>                                  
             <option value="ARTIST_INTERVIEWS">Entrevista a Artistas</option>
@@ -59,7 +59,7 @@ const Navbar = () => {
       ) : (
         <Link
              to="/login"
-             className="px-5 py-2 text-center font-semibold bg-blue rounded-xl w-1/3"
+             className="px-3 py-2 text-center font-semibold bg-blue rounded-xl w-1/3"
            >
              Login
            </Link>
