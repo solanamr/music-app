@@ -46,19 +46,19 @@ const Comments = ({ postId, comments }) => {
   };
 
   return (
-    <main>
-      <section className="flex-col">
+    <main className="w-5/6">
+      <section className="flex-col ">
         <form
           onSubmit={
             submit}
-          className="flex-column "
+          className="flex-column"
         >
-          <div className="flex items-center flex-col">
+          <div className="flex items-center flex-col ">
             <textarea
               value={input.Text}
               name="Text"
               onChange={handleChange}
-              className="mx-2 my-1 border border-purple-600 rounded-md  text-black p-4 w-5/6 flex-col"
+              className="mx-2 my-1 border border-purple-600 rounded-md  text-black p-4 w-full flex-col"
               type="text"
               id="Text"
               placeholder="Comment"
