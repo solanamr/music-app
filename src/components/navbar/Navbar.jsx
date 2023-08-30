@@ -4,11 +4,14 @@ import { Link } from "react-router-dom";
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../redux/states/auth/authSlice';
+import { filterCategory } from "../../redux/states/blog/blogSlice";
+
 
 const Navbar = () => {
 
   const dispatch = useDispatch();
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+
 
   const handleLogout = async () => {
     try {
@@ -22,6 +25,10 @@ const Navbar = () => {
     }
   };
 
+  const handleCategoryChange = (e) => {
+    dispatch(filterCategory(e.target.value));
+  };
+
   return (
     <nav className="border-b border-blue-300 py-2 bg-white">
       <div className="flex items-center justify-between  max-w-full px-[6%]">
@@ -33,7 +40,7 @@ const Navbar = () => {
         </div>
 
        <div className="flex">
-         <select className="rounded-md px-2 py-2 border border-black ml-1 mr-4 w-2/3">
+         <select onChange={e => {handleCategoryChange(e)}} className="rounded-md px-2 py-2 border border-black ml-1 mr-4 w-2/3">
             <option value=""> Categorías</option>
             <option value="REVIEWS">Reseñas</option>                                  
             <option value="ARTIST_INTERVIEWS">Entrevista a Artistas</option>

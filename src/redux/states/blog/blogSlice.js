@@ -4,10 +4,6 @@ import axios from "axios";
 export const EmptyState = {
     blogs: [],
     blogsCopy: [],
-    comments: [],
-    comment: [],
-    userId: 0
-    
   };
 
 
@@ -30,6 +26,7 @@ export const EmptyState = {
     'blog/fetchComments', async (postId) => {
     const response = await axios.get(`http://localhost:5077/api/comments/post/${postId}`);
     const data = response.data.$values
+    // console.log("🚀 ~ file: blogSlice.js:33 ~ 'blog/fetchComments', ~ data:", data)
     return data;
  })
 
@@ -39,11 +36,11 @@ export const EmptyState = {
     name: "blog",
     initialState: EmptyState,
     reducers: {
-      // filterEyeColor: (state, action) => {
-      //   state.blogs = state.charactersCopy.filter(
-      //     (e) => e.eye_color === action.payload
-      //   ); 
-      // },
+      filterCategory: (state, action) => {
+        state.blogs = state.blogsCopy.filter(
+          (e) => e.category === action.payload
+        ); 
+      },
       
       // filterGender: (state, action) => {
       //   state.characters = state.charactersCopy.filter(
@@ -78,7 +75,7 @@ export const EmptyState = {
     },
   });
 
-  export const { filterEyeColor, filterGender } = blogSlice.actions;
+  export const { filterCategory } = blogSlice.actions;
 
 
-export default blogSlice.reducer;
+export default blogSlice.reducer; 

@@ -20,21 +20,12 @@ const Detail = () => {
   }, [dispatch]);
   
   const blogId = useSelector((state) => state.blogs.blogs);
-  // console.log("🚀 ~ file: Detail.jsx:15 ~ Detail ~  blogId:",  blogId)
-
-  const algo = useSelector((state) => state.blogs.blogs.map(blog => blog.id));
-  console.log("🚀 ~ file: Detail.jsx:26 ~ Detail ~ algo:", algo)
-
+  // console.log("🚀 ~ file: Detail.jsx:15 ~ Detail ~  blogId:",  blogId
   
-algo.forEach(id => {id});
-  
-  const idState = useSelector((state) => state.blogs.blogs.map(blog => blog.id));
- 
 
-  const idMap = idState.forEach(id => {id});
   
   const idFilter = blogId.filter((f) => f.id == id)
-  console.log(idFilter)
+  // console.log(idFilter)
   
   
   
@@ -66,7 +57,7 @@ algo.forEach(id => {id});
                       </div>
                         
                       </div>
-                      <Comments postId={f.id}/>
+                      <Comments postId={f.id} comments={f.comments.$values}/>
                       
                       
                       </div>
