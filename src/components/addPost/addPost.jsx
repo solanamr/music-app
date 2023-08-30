@@ -82,8 +82,8 @@ const AddPost = () => {
       <Navbar />
 
       <div className="main-body items-center flex justify-center bg-lightBlue w-full h-screen">
-        <form className="flex-row" onSubmit={submit}>
-          <div className="card-container self-center bg-white rounded-xl py-4 px-6 md:flex md:flex-row md:space-x-6 ">
+        <form className="flex flex-row justify-center" onSubmit={submit}>
+          <div className="card-container w-5/6 self-center bg-white rounded-xl py-4 px-4 md:flex flex-row space-x-6 md:w-full ">
             <div className="user-image shadow-2xl p-4 flex md:w-96 md:h-96 ml:w-full">
               <img
                 className="object-cover w-fit-content "
@@ -91,7 +91,7 @@ const AddPost = () => {
                 alt="Instrumentos musicales"
               ></img>
             </div>
-            <div className="inputs-container flex-row space-y-4 p-4">
+            <div className="inputs-container mt-2 space-y-4 inline">
               <div className="text-center">
                 <h1 className="text-black text-3xl font-bold inline-block">
                   New Post
@@ -115,7 +115,7 @@ const AddPost = () => {
                   onChange={(e) => handleChangeCat(e)}
                   className="rounded-md px-2 py-2 border border-purple-600 my-1"
                 >
-                  <option value=""> Categorías</option>
+                  <option value=""> Categoría</option>
                   <option value="REVIEWS">Reseñas</option>
                   <option value="ARTIST_INTERVIEWS">
                     Entrevista a Artistas
