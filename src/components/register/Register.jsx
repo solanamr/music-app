@@ -42,7 +42,7 @@ const Register = () => {
         }}
       >
         {/* <div className="bg-lightBlue lg:bg-white lg:bg-opacity-20 lg:backdrop-blur-lg lg:border lg:border-white lg:drop-shadow-lg flex-row justify-center  max-w-sm   rounded-lg text-white"></div> */}
-        <div className="bg-lightBlue  lg:border lg:border-white lg:drop-shadow-lg flex-row justify-center w-5/6  rounded-lg text-white md:w-1/4">
+        <div className="bg-lightBlue  lg:border lg:border-white lg:drop-shadow-lg flex-row justify-center w-5/6  rounded-lg text-white md:w-96 ">
          <div className="mt-10">
          <h1 className="title text-4xl font-bold justify-center text-center uppercase">
             Register
@@ -55,9 +55,9 @@ const Register = () => {
           >
             {" "}
             {/* handleSubmit valida los input antes de invocar onSubmit */}
-            <div className="flex justify-center">
+            <div className="flex flex-col justify-center items-center ">
               <input
-                className=" my-3 py-1 px-2 border-b-2 border-black rounded-md bg-lightGrey text-black placeholder-white placeholder-opacity-75"
+                className=" my-3 py-1 px-2 border-b-2 border-black rounded-md bg-lightGrey text-black placeholder-white placeholder-opacity-75 w-5/6 md:w-3/5"
                 type="text"
                 name="name"
                 placeholder="Nombre"
@@ -78,10 +78,10 @@ const Register = () => {
                 </span>
               )}
             </div>
-            <div className="flex justify-center">
+            <div className="flex flex-col justify-center items-center">
               
               <input
-                className=" my-2 py-1 px-2 border-b-2 border-black rounded-md bg-lightGrey text-black placeholder-white placeholder-opacity-75"
+                className=" my-2 py-1 px-2 border-b-2 border-black rounded-md bg-lightGrey text-black placeholder-white placeholder-opacity-75 w-5/6 md:w-3/5"
                 type="text"
                 name="lastName"
                 placeholder="Apellido"
@@ -102,10 +102,10 @@ const Register = () => {
                 </span>
               )}
             </div>
-            <div className="flex justify-center">
+            <div className="flex flex-col justify-center items-center">
               
               <input
-                className="my-2 py-1 px-2 border-b-2 border-black rounded-md bg-lightGrey text-black placeholder-white placeholder-opacity-75"
+                className="my-2 py-1 px-2 border-b-2 border-black rounded-md bg-lightGrey text-black placeholder-white placeholder-opacity-75 w-5/6 md:w-3/5"
                 type="text"
                 name="email"
                 placeholder="Email"
@@ -120,16 +120,17 @@ const Register = () => {
                   },
                 })}
               />
-              {errors.Email && (
-                <span className="text-xs italic mx-7">
+            
+              {errors.Email && (<div> <span className="text-xs italic mx-7">
                   {errors.Email.message}
-                </span>
+                </span></div>
+               
               )}
             </div>
-            <div className="flex justify-center">
+            <div className="flex  flex-col justify-center items-center">
               
               <input
-                className="my-2 py-1 px-2 border-b-2 border-black rounded-md bg-lightGrey text-black placeholder-white placeholder-opacity-75"
+                className="my-2 py-1 px-2 border-b-2 border-black rounded-md bg-lightGrey text-black placeholder-white placeholder-opacity-75 w-5/6 md:w-3/5"
                 name="password"
                 type="password"
                 placeholder="Contraseña"
@@ -146,7 +147,7 @@ const Register = () => {
                 })}
               />
               {errors.Password && (
-                <span className="text-xs italic text-justify mt-1 mx-7">
+                <span  style={{ display: 'block', marginTop: '5px' }}   className="text-xs italic mx-7 ">
                   {errors.Password.message}
                 </span>
               )}
@@ -178,3 +179,4 @@ const Register = () => {
 };
 
 export default Register;
+ 

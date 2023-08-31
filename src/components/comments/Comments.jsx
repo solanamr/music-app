@@ -6,11 +6,25 @@ import { fetchBlogs } from "../../redux/states/blog/blogSlice";
 
 import { useDispatch } from "react-redux";
 
+
+function validacion(input){ 
+  const errores = {}
+  if(!input.Text){
+      errores.Text = "Debe completar este campo";
+  }
+ 
+  return errores
+}
+
+
+
+
 const Comments = ({ postId, comments }) => {
   const [input, setInput] = useState("");
 
   const dispatch = useDispatch();
 
+  const [errores, setErrores] = useState({}) 
 
   useEffect(() => {
     dispatch(fetchBlogs());
@@ -20,6 +34,11 @@ const Comments = ({ postId, comments }) => {
     setInput(
        e.target.value,
     );
+    setErrores(validacion({
+      ...input,
+      [e.target.name]: e.target.value
+  }))
+    
     // console.log(input);
   };
   const jwtToken = localStorage.getItem("token");
@@ -27,6 +46,11 @@ const Comments = ({ postId, comments }) => {
   const submit = async (e) => {
    e.preventDefault()
    console.log(input);
+
+   if(!input.name){
+    return alert("Debe completar los campos")
+    }; ///
+
     try {
       const res = await axios.post(
         "http://localhost:5077/api/comments",
@@ -70,6 +94,7 @@ const Comments = ({ postId, comments }) => {
             <button
               type="submit"
               className="text-white bg-blue px-2 py-1 rounded-md mt-1 "
+              disabled={Object.keys(errores).length}//
             >
               Add comment
             </button>
@@ -87,7 +112,7 @@ const Comments = ({ postId, comments }) => {
                   <img
                     src={`https://api.dicebear.com/6.x/adventurer/svg?seed=${c.id}`}
                     alt=""
-                    className="w-20 h-20"
+                    className="w-10 h-10 md:w-20 h-20"
                   />
                   <div className="flex-col">
                     <h3>{c.text}</h3>
