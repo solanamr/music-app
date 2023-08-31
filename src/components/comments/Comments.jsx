@@ -6,25 +6,12 @@ import { fetchBlogs } from "../../redux/states/blog/blogSlice";
 
 import { useDispatch } from "react-redux";
 
-
-function validacion(input){ 
-  const errores = {}
-  if(!input.Text){
-      errores.Text = "Debe completar este campo";
-  }
- 
-  return errores
-}
-
-
-
-
 const Comments = ({ postId, comments }) => {
+// console.log(comments.map((u) =>(u.user.email)))
+
   const [input, setInput] = useState("");
 
   const dispatch = useDispatch();
-
-  const [errores, setErrores] = useState({}) 
 
   useEffect(() => {
     dispatch(fetchBlogs());
@@ -34,23 +21,13 @@ const Comments = ({ postId, comments }) => {
     setInput(
        e.target.value,
     );
-    setErrores(validacion({
-      ...input,
-      [e.target.name]: e.target.value
-  }))
-    
     // console.log(input);
   };
   const jwtToken = localStorage.getItem("token");
 
   const submit = async (e) => {
-   e.preventDefault()
+  //  e.preventDefault()
    console.log(input);
-
-   if(!input.name){
-    return alert("Debe completar los campos")
-    }; ///
-
     try {
       const res = await axios.post(
         "http://localhost:5077/api/comments",
@@ -69,20 +46,25 @@ const Comments = ({ postId, comments }) => {
     }
   };
 
+  const formatDate = (dateString) =>{
+    const dateObject = new Date(dateString);
+    return dateObject.toLocaleString();
+  }
+
   return (
     <main className="w-5/6">
-      <section className="flex-col ">
+      <section className="flex-col">
         <form
           onSubmit={
             submit}
-          className="flex-column"
+          className="flex-column w-full"
         >
-          <div className="flex items-center flex-col ">
+          <div className="flex items-center flex-col">
             <textarea
               value={input.Text}
               name="Text"
               onChange={handleChange}
-              className="mx-2 my-1 border border-purple-600 rounded-md  text-black p-4 w-full flex-col"
+              className="mx-2 my-1 border border-purple-600 rounded-md  text-black p-4 w-5/6 flex-col"
               type="text"
               id="Text"
               placeholder="Comment"
@@ -94,14 +76,13 @@ const Comments = ({ postId, comments }) => {
             <button
               type="submit"
               className="text-white bg-blue px-2 py-1 rounded-md mt-1 "
-              disabled={Object.keys(errores).length}//
             >
               Add comment
             </button>
           </div>
         </form>
 
-        <div className="flex-column mx-8 md:mx-40 mb-4">
+        <div className="flex-column md:mx-40 mb-4">
           {comments.map((c) => (
             <div
               key={c.id}
@@ -112,12 +93,14 @@ const Comments = ({ postId, comments }) => {
                   <img
                     src={`https://api.dicebear.com/6.x/adventurer/svg?seed=${c.id}`}
                     alt=""
-                    className="w-10 h-10 md:w-20 h-20"
-                  />
+                    className="w-20 h-20"
+                    />
                   <div className="flex-col">
+                    <p>{c.user.email}</p>
                     <h3>{c.text}</h3>
-                    <p>{c.creationDate}</p>
+                    <p>{formatDate(c.creationDate)}</p>
                   </div>
+                  
                 </div>
 
                 <div>

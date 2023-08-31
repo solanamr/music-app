@@ -26,7 +26,7 @@ export const EmptyState = {
     'blog/fetchComments', async (postId) => {
     const response = await axios.get(`http://localhost:5077/api/comments/post/${postId}`);
     const data = response.data.$values
-    // console.log("🚀 ~ file: blogSlice.js:33 ~ 'blog/fetchComments', ~ data:", data)
+    //console.log("🚀 ~ file: blogSlice.js:33 ~ 'blog/fetchComments', ~ data:", response)
     return data;
  })
 
