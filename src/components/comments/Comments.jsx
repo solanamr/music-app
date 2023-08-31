@@ -51,12 +51,12 @@ const Comments = ({ postId, comments }) => {
   }
 
   return (
-    <main>
+    <main className="w-5/6">
       <section className="flex-col">
         <form
           onSubmit={
             submit}
-          className="flex-column "
+          className="flex-column w-full"
         >
           <div className="flex items-center flex-col">
             <textarea
@@ -81,7 +81,7 @@ const Comments = ({ postId, comments }) => {
           </div>
         </form>
 
-        <div className="flex-column mx-8 md:mx-40 mb-4">
+        <div className="flex-column md:mx-40 mb-4">
           {comments.map((c) => (
             <div
               key={c.id}

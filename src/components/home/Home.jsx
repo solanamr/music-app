@@ -19,32 +19,35 @@ const Home = () => {
   
 
   return (
-    <section className="h-full ">
+    <section className="h-full">
       <Navbar />
-      <div className="flex justify-center items-center pt-20">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold px-1 text-lightBlue">Accento musical</h1>
-        <p className="text-2xl italic text-semibold pt-5 px-2 text-purple">Explora el mundo a través del ritmo, donde la música encuentra su voz</p>
+      <div className="flex justify-center items-center pt-20 pb-20">
+        <div className="text-center">
+          <h1 className="text-4xl font-bold px-1 text-lightBlue">Accento musical</h1>
+          <p className="text-2xl italic text-semibold pt-5 px-2 text-purple">Explora el mundo a través del ritmo, donde la música encuentra su voz</p>
+        </div>
       </div>
-    </div>
-      <div className="flex justify-center flex-wrap px-5">
-        {blogsState.length > 0 ? 
-        blogsState.map((b, i) => (
-          <div key={i} className="w-fit">
-            <Blog
-              title={b.title}
-              img={b.image}
-              text={b.text}
-              key={i}
-              cat={b.category}
-              id={b.id}
-            />
-          </div>
-        ))
-      :
-      <p className="text-4xl animate-pulse text-purple pt-20 h-screen font-bold">Cargando...</p>
-      }
+      <div className="flex justify-center">
+        <div className="flex justify-center flex-wrap w-5/6 ">
+          {blogsState.length > 0 ? 
+          blogsState.map((b, i) => (
+            <div key={i} className="w-fit">
+              <Blog
+                title={b.title}
+                img={b.image}
+                text={b.text}
+                key={i}
+                cat={b.category}
+                id={b.id}
+              />
+            </div>
+          ))
+        :
+        <p className="text-4xl animate-pulse text-purple pt-20 h-screen font-bold">Cargando...</p>
+        }
+        </div>
       </div>
+      
       <AddBoton/>
 
       <Footer />

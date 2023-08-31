@@ -34,7 +34,7 @@ const Register = () => {
   return (
     <section>
     <Navbar2/>
-          <div
+        <div
         className="flex flex-col items-center justify-center h-screen bg-cover bg-no-repeat bg-center"
         style={{
           backgroundImage: `url(${background})`,
@@ -42,9 +42,9 @@ const Register = () => {
         }}
       >
         {/* <div className="bg-lightBlue lg:bg-white lg:bg-opacity-20 lg:backdrop-blur-lg lg:border lg:border-white lg:drop-shadow-lg flex-row justify-center  max-w-sm   rounded-lg text-white"></div> */}
-        <div className="bg-lightBlue  lg:border lg:border-white lg:drop-shadow-lg flex-row justify-center  max-w-sm   rounded-lg text-white">
-         <div className="mt-6">
-         <h1 className="title m-6 text-4xl font-bold justify-center text-center uppercase">
+        <div className="bg-lightBlue  lg:border lg:border-white lg:drop-shadow-lg flex-row justify-center w-5/6  rounded-lg text-white md:w-96 ">
+         <div className="mt-10">
+         <h1 className="title text-4xl font-bold justify-center text-center uppercase">
             Register
           </h1>
          </div>
@@ -55,9 +55,9 @@ const Register = () => {
           >
             {" "}
             {/* handleSubmit valida los input antes de invocar onSubmit */}
-            <div className="mx-7">
+            <div className="flex flex-col justify-center items-center ">
               <input
-                className=" mx-7 my-3 py-1 px-2 border-b-2 border-black rounded-md bg-lightGrey text-black placeholder-white placeholder-opacity-75"
+                className=" my-3 py-1 px-2 border-b-2 border-black rounded-md bg-lightGrey text-black placeholder-white placeholder-opacity-75 w-5/6 md:w-3/5"
                 type="text"
                 name="name"
                 placeholder="Nombre"
@@ -78,10 +78,10 @@ const Register = () => {
                 </span>
               )}
             </div>
-            <div className="mx-7">
+            <div className="flex flex-col justify-center items-center">
               
               <input
-                className="mx-7 my-2 py-1 px-2 border-b-2 border-black rounded-md bg-lightGrey text-black placeholder-white placeholder-opacity-75"
+                className=" my-2 py-1 px-2 border-b-2 border-black rounded-md bg-lightGrey text-black placeholder-white placeholder-opacity-75 w-5/6 md:w-3/5"
                 type="text"
                 name="lastName"
                 placeholder="Apellido"
@@ -102,10 +102,10 @@ const Register = () => {
                 </span>
               )}
             </div>
-            <div className="mx-7">
+            <div className="flex flex-col justify-center items-center">
               
               <input
-                className=" mx-7 my-2 py-1 px-2 border-b-2 border-black rounded-md bg-lightGrey text-black placeholder-white placeholder-opacity-75"
+                className="my-2 py-1 px-2 border-b-2 border-black rounded-md bg-lightGrey text-black placeholder-white placeholder-opacity-75 w-5/6 md:w-3/5"
                 type="text"
                 name="email"
                 placeholder="Email"
@@ -120,16 +120,17 @@ const Register = () => {
                   },
                 })}
               />
-              {errors.Email && (
-                <span className="text-xs italic mx-7">
+            
+              {errors.Email && (<div> <span className="text-xs italic mx-7">
                   {errors.Email.message}
-                </span>
+                </span></div>
+               
               )}
             </div>
-            <div className="mx-7">
+            <div className="flex  flex-col justify-center items-center">
               
               <input
-                className="mx-7 my-2 py-1 px-2 border-b-2 border-black rounded-md bg-lightGrey text-black placeholder-white placeholder-opacity-75"
+                className="my-2 py-1 px-2 border-b-2 border-black rounded-md bg-lightGrey text-black placeholder-white placeholder-opacity-75 w-5/6 md:w-3/5"
                 name="password"
                 type="password"
                 placeholder="Contraseña"
@@ -146,21 +147,23 @@ const Register = () => {
                 })}
               />
               {errors.Password && (
-                <span className="text-xs italic text-justify mt-1 mx-7">
+                <span  style={{ display: 'block', marginTop: '5px' }}   className="text-xs italic mx-7 ">
                   {errors.Password.message}
                 </span>
               )}
             </div>
+            <div className="flex justify-center">
             <button
               type="submit"
       
               // value="submit"
-              className=" text-white bg-purple px-6 py-1 rounded-md ml-28 mt-5 mb-5"
+              className=" text-white bg-purple px-6 py-1 rounded-md mt-5 mb-5"
             >
               Sign Up
             </button>
-            <div className="register">
-              <p className="mx-14 text-sm">
+            </div>
+            <div className="flex justify-center">
+              <p className="mx-14 text-sm text-center">
                 Already have an account?
                 <Link to="/login" className="hover:underline">
                   {" "}
@@ -176,3 +179,4 @@ const Register = () => {
 };
 
 export default Register;
+ 
