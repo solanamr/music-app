@@ -7,10 +7,10 @@ import { fetchBlogs } from "../../redux/states/blog/blogSlice";
 import { useDispatch } from "react-redux";
 
 const Comments = ({ postId, comments }) => {
+
   const [input, setInput] = useState("");
 
   const dispatch = useDispatch();
-
 
   useEffect(() => {
     dispatch(fetchBlogs());
@@ -25,7 +25,7 @@ const Comments = ({ postId, comments }) => {
   const jwtToken = localStorage.getItem("token");
 
   const submit = async (e) => {
-   e.preventDefault()
+  //  e.preventDefault()
    console.log(input);
     try {
       const res = await axios.post(
@@ -44,6 +44,11 @@ const Comments = ({ postId, comments }) => {
       console.error(err);
     }
   };
+
+  const formatDate = (dateString) =>{
+    const dateObject = new Date(dateString);
+    return dateObject.toLocaleString();
+  }
 
   return (
     <main>
@@ -88,11 +93,13 @@ const Comments = ({ postId, comments }) => {
                     src={`https://api.dicebear.com/6.x/adventurer/svg?seed=${c.id}`}
                     alt=""
                     className="w-20 h-20"
-                  />
+                    />
                   <div className="flex-col">
+                    <p>{c.user.email}</p>
                     <h3>{c.text}</h3>
-                    <p>{c.creationDate}</p>
+                    <p>{formatDate(c.creationDate)}</p>
                   </div>
+                  
                 </div>
 
                 <div>
