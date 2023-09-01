@@ -35,7 +35,6 @@ const Home = () => {
               <Blog
                 title={b.title}
                 img={b.image}
-                text={b.text}
                 key={i}
                 cat={b.category}
                 id={b.id}

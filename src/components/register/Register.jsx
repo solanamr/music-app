@@ -41,11 +41,11 @@ const Register = () => {
           backgroundSize: "contain",
         }}
       >
-        {/* <div className="bg-lightBlue lg:bg-white lg:bg-opacity-20 lg:backdrop-blur-lg lg:border lg:border-white lg:drop-shadow-lg flex-row justify-center  max-w-sm   rounded-lg text-white"></div> */}
-        <div className="bg-lightBlue  lg:border lg:border-white lg:drop-shadow-lg flex-row justify-center w-5/6  rounded-lg text-white md:w-96 ">
+        
+        <div className="bg-purple lg:bg-white lg:bg-opacity-20 lg:backdrop-blur-lg border-2 border-white lg:border lg:border-white lg:drop-shadow-lg flex-row justify-center  max-w-sm   rounded-lg text-white">
          <div className="mt-10">
          <h1 className="title text-4xl font-bold justify-center text-center uppercase">
-            Register
+            Registrate
           </h1>
          </div>
           
@@ -157,17 +157,17 @@ const Register = () => {
               type="submit"
       
               // value="submit"
-              className=" text-white bg-purple px-6 py-1 rounded-md mt-5 mb-5"
+              className=" text-white bg-black lg:bg-purple px-6 py-1 rounded-md mt-5 mb-5"
             >
-              Sign Up
+              Registrate
             </button>
             </div>
             <div className="flex justify-center">
               <p className="mx-14 text-sm text-center">
-                Already have an account?
+                Ya tenés cuenta?
                 <Link to="/login" className="hover:underline">
                   {" "}
-                  Log In
+                  Iniciá sesión
                 </Link>
               </p>
             </div>

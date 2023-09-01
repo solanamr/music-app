@@ -4,10 +4,9 @@ import headphones from "../../assets/imgHeadphones.png";
 import loginn from "../../assets/login.jpg";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import { login, logout } from '../../redux/states/auth/authSlice';
-import { useDispatch } from 'react-redux';
+import { login } from "../../redux/states/auth/authSlice";
+import { useDispatch } from "react-redux";
 import Navbar2 from "../Navbar2/Navbar2";
-
 
 const Login = () => {
   const navigate = useNavigate();
@@ -29,10 +28,10 @@ const Login = () => {
         data
       );
       dispatch(login());
-      const jwtToken = res.data.token
-      localStorage.setItem('token', jwtToken);
+      const jwtToken = res.data.token;
+      localStorage.setItem("token", jwtToken);
       if (res.status === 200) {
-        setIsLoggedIn(true)
+        setIsLoggedIn(true);
       }
       reset();
       navigate("/");
@@ -41,24 +40,22 @@ const Login = () => {
     } catch (err) {
       console.error(err);
     }
-  
   };
-
 
   return (
     <main className="flex-row justify-center ">
-      <Navbar2/>
+      <Navbar2 />
       {/* La imagen desaparece para display de mobile. */}
       <div className="flex">
         <div className="hidden md:block w-full">
-          <img src={loginn} alt="" className="h-screen w-full"/>
+          <img src={loginn} alt="" className="h-screen w-full" />
         </div>
 
         <div className="form-section flex flex-col justify-center bg-purple h-screen w-full">
           <div className="headset-image flex justify-center items-center">
-            <img className="mb-14 inline" src={headphones}/>
+            <img className="mb-14 inline" src={headphones} />
           </div>
-          <h1 className="text-white text-5xl text-center">WELCOME</h1>
+          <h1 className="text-white text-5xl text-center">BIENVENIDO</h1>
 
           <form className="" onSubmit={handleSubmit(onSubmit)}>
             {" "}
@@ -69,7 +66,7 @@ const Login = () => {
                   type="text"
                   name="Email"
                   placeholder="Email"
-                  className="border-b-2 border-lightGrey bg-purple text-white mt-10 mb-1  mx-auto"
+                  className="border-b-2 border-lightGrey py-1  bg-purple text-white mt-10 mb-1  mx-auto"
                   {...register("Email", {
                     //registra el input
                     required: {
@@ -81,16 +78,20 @@ const Login = () => {
                       message: "El formato es incorrecto",
                     },
                   })}
-                  />
-                  {errors.Email && <span className='text-xs text-white italic self-center'>{errors.Email.message}</span>}
+                />
+                {errors.Email && (
+                  <span className="text-xs text-white italic self-center">
+                    {errors.Email.message}
+                  </span>
+                )}
               </div>
 
               <div className="pass-field flex flex-col">
                 <input
                   type="password"
                   name="Password"
-                  placeholder="Password"
-                  className="border-b-2 border-lightGrey bg-purple mt-5 mx-auto text-white"
+                  placeholder="Contraseña"
+                  className="border-b-2 border-lightGrey py-1 bg-purple mt-5 mx-auto text-white"
                   {...register("Password", {
                     required: {
                       value: true,
@@ -105,7 +106,11 @@ const Login = () => {
                     },
                   })}
                 />
-                {errors.Password && <span className='text-xs text-white italic self-center mt-1'>{errors.Password.message}</span>}
+                {errors.Password && (
+                  <span className="text-xs text-white italic self-center mt-1">
+                    {errors.Password.message}
+                  </span>
+                )}
               </div>
             </div>
             <div className="flex justify-center">
@@ -113,21 +118,19 @@ const Login = () => {
                 type="submit"
                 className="text-white bg-blue px-4 py-1 rounded-md mt-7 "
               >
-                Sign In
+                Iniciar sesión
               </button>
             </div>
             <div className="flex justify-center">
               <p className="text-white pt-10">
-                Don't have an account? <Link to="/register" > Register</Link>
+                No tenes una cuenta? <Link to="/register"> Registrate</Link>
               </p>
             </div>
           </form>
-         
         </div>
       </div>
     </main>
   );
 };
-
 
 export default Login;

@@ -1,4 +1,3 @@
-
 import headphonesLogo from "../../assets/headphones.png";
 import { Link } from "react-router-dom";
 import axios from 'axios';
@@ -19,6 +18,7 @@ const Navbar = () => {
 
       if (response.status === 200) {
         dispatch(logout());
+        localStorage.removeItem("token");
       }
     } catch (error) {
       console.error('Error en el cierre de sesión', error);
@@ -35,7 +35,7 @@ const Navbar = () => {
         <div className="mr-6">
           <Link to="/" className="flex">
             <img src={headphonesLogo} width={50} height={55}></img>
-            <p className="self-center px-2 font-semibold">ACCENTO MUSICAL</p>
+            <p className="self-center px-2 font-semibold text-purple">ACCENTO MUSICAL</p>
           </Link>
         </div>
 
@@ -55,13 +55,13 @@ const Navbar = () => {
          </select>
 
          {isLoggedIn ? (
-        <button onClick={handleLogout} className="px-5 py-2 text-center font-semibold bg-blue rounded-xl w-1/3">Logout</button>
+        <button onClick={handleLogout} className="px-2 py-2 text-center font-semibold bg-blue rounded-xl w-1/3">Salir</button>
       ) : (
         <Link
              to="/login"
-             className="px-3 py-2 text-center font-semibold bg-blue rounded-xl w-1/3"
+             className=" py-2 text-center font-semibold bg-blue rounded-xl w-2/3"
            >
-             Login
+             Ingresar
            </Link>
       )}   
        </div>
